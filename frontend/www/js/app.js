@@ -32,15 +32,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
   .state('app.sell', {
       url: '/sell',
       views: {
@@ -57,22 +48,31 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.selectRole', {
+    url: '/selectRole',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/select_role.html'
+      }
+    }
+  })
+
+  .state('app.buyerClassInfo', {
+    url: '/buyerClassInfo',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/buyer_class_info.html'
+      }
+    }
+  })
+
+  .state('app.buyerSuggestedBooks', {
+    url: '/buyerSuggestedBooks',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/buyer_suggested_books.html',
+        controller: 'BuyerSuggestedBooksCtrl'
       }
     }
   });
