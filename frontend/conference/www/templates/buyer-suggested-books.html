@@ -1,0 +1,27 @@
+<ion-view view-title="Class Info" ng-init="books = [{title: 'ad', author: 'Yvonne'}]">
+  <ion-content>
+    <ion-card ng-repeat="book in books">
+        <ion-card-header>
+            {{book.title}}
+        </ion-card-header>
+        <br>
+        <ion-card-content>
+            {{book.author}}
+        </ion-card-content>
+    </ion-card>
+    <br>
+    <p>Not found? Input information below.</p>
+    <ion-list>
+        <ion-item>
+            <ion-label color="primary">Textbook Name</ion-label>
+            <ion-input placeholder="William Eason"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary">Author</ion-label>
+            <ion-input placeholder="William Eason"></ion-input>
+        </ion-item>
+    </ion-list>
+    <button ui-sref="app.buyerClassInfo" ion-button>Back</button>
+    <button ui-sref="" ion-button>Next</button>
+  </ion-content>
+</ion-view>
