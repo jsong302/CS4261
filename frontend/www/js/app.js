@@ -101,7 +101,27 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/buyer_select_course.html',
-        controller: 'SellerConfirmationCtrl'
+        controller: 'BuyerSelectCourseCtrl'
+      }
+    }
+  })
+
+  .state('app.buyerSuggestedBooks', {
+    url: '/buyerSuggestedBooks',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/buyer_suggested_books.html',
+        controller: 'BuyerSuggestedBooksCtrl'
+      }
+    }
+  })
+
+  .state('app.buyerBookList', {
+    url: '/buyerBookList',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/buyer_book_list.html',
+        controller: 'BuyerBookListCtrl'
       }
     }
   });

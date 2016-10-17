@@ -59,4 +59,36 @@ angular.module('starter.controllers', [])
     author: 'Gonzalo Camarillo, Miguel-Angel Garcia-Martin',
     price: 62.63
   };
+})
+
+.controller('BuyerSelectCourseCtrl', function($scope) {
+  $scope.courses = [
+    'CS 4261',
+    'CS 4641',
+    'CS 3312',
+    'CS 4001',
+    'CS 3790'
+  ];
+})
+
+.controller('BuyerSuggestedBooksCtrl', function($scope) {
+  $scope.suggestedBooks = [
+    {title: 'The 3G IP Multimedia Subsystem (IMS): Merging the Internet and the Cellular Worlds',
+    author: 'Gonzalo Camarillo, Miguel-Angel Garcia-Martin'},
+    {title: 'The IMS: IP Multimedia Concepts and Services',
+    author: 'Miikka Poikselka, Aki Niemi, Hisham Khartabil, Georg Mayer'}
+  ];
+})
+
+.controller('BuyerBookListCtrl', function($scope) {
+  $scope.sellers = [
+    {name: 'Yvonne',
+    price: 20},
+    {name: 'Kelly',
+    price: 20},
+    {name: 'Alex',
+    price: 20},
+    {name: 'Josh',
+    price: 20}
+  ];
 });
