@@ -58,24 +58,43 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.buyerClassInfo', {
-    url: '/buyerClassInfo',
+  .state('app.sellerClassInfo', {
+    url: '/sellerClassInfo',
     views: {
       'menuContent': {
-        templateUrl: 'templates/buyer_class_info.html'
+        templateUrl: 'templates/seller_class_info.html'
       }
     }
   })
 
-  .state('app.buyerSuggestedBooks', {
-    url: '/buyerSuggestedBooks',
+  .state('app.sellerSuggestedBooks', {
+    url: '/sellerSuggestedBooks',
     views: {
       'menuContent': {
-        templateUrl: 'templates/buyer_suggested_books.html',
-        controller: 'BuyerSuggestedBooksCtrl'
+        templateUrl: 'templates/seller_suggested_books.html',
+        controller: 'SellerSuggestedBooksCtrl'
+      }
+    }
+  })
+
+  .state('app.sellerSetPrice', {
+    url: '/sellerSetPrice',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/seller_set_price.html'
+      }
+    }
+  })
+
+  .state('app.sellerConfirmation', {
+    url: '/sellerConfirmation',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/seller_confirmation.html',
+        controller: 'SellerConfirmationCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/selectRole');
 });

@@ -41,25 +41,22 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('BuyerSuggestedBooksCtrl', function($scope) {
+.controller('SellerSuggestedBooksCtrl', function($scope) {
   $scope.suggestedBooks = [
     {title: 'The 3G IP Multimedia Subsystem (IMS): Merging the Internet and the Cellular Worlds',
     author: 'Gonzalo Camarillo, Miguel-Angel Garcia-Martin'},
     {title: 'The IMS: IP Multimedia Concepts and Services',
     author: 'Miikka Poikselka, Aki Niemi, Hisham Khartabil, Georg Mayer'}
   ];
+})
+
+.controller('SellerConfirmationCtrl', function($scope) {
+  $scope.bookInfo = {
+    course: 'CS 4261',
+    instructor: 'William Eason',
+    semester: 'Fall 2016',
+    title: 'The 3G IP Multimedia Subsystem (IMS): Merging the Internet and the Cellular Worlds',
+    author: 'Gonzalo Camarillo, Miguel-Angel Garcia-Martin',
+    price: 62.63
+  };
 });
-
-// .controller('PlaylistsCtrl', function($scope) {
-//   $scope.playlists = [
-//     { title: 'Reggae', id: 1 },
-//     { title: 'Chill', id: 2 },
-//     { title: 'Dubstep', id: 3 },
-//     { title: 'Indie', id: 4 },
-//     { title: 'Rap', id: 5 },
-//     { title: 'Cowbell', id: 6 }
-//   ];
-// })
-
-// .controller('PlaylistCtrl', function($scope, $stateParams) {
-// });

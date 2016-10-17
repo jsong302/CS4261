@@ -1,0 +1,27 @@
+<ion-view view-title="Suggested Textbooks">
+  <ion-content>
+    <ion-card ng-repeat="book in suggestedBooks">
+        <ion-card-header>
+            {{book.title}}
+        </ion-card-header>
+        <br>
+        <ion-card-content>
+            {{book.author}}
+        </ion-card-content>
+    </ion-card>
+    <br>
+    <p> Not found? Input information below.</p>
+    <ion-list>
+        <ion-item>
+            <label ion-label color="primary">Textbook Name</label>
+            <input ion-input type="text" placeholder="The Study of Mobile Apps"></input>
+        </ion-item>
+        <ion-item>
+            <label ion-label color="primary">Author</label>
+            <input ion-input type="text" placeholder="William Eason"></input>
+        </ion-item>
+    </ion-list>
+
+    <button ui-sref="app.sellerSetPrice" ion-button>Next</button>
+  </ion-content>
+</ion-view>
