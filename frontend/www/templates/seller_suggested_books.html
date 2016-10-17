@@ -1,14 +1,15 @@
 <ion-view view-title="Suggested Textbooks">
   <ion-content>
-    <ion-card ng-repeat="book in suggestedBooks">
-        <ion-card-header>
-            {{book.title}}
-        </ion-card-header>
-        <br>
-        <ion-card-content>
-            {{book.author}}
-        </ion-card-content>
-    </ion-card>
+    <button ui-sref="app.sellerSetPrice">
+        <div class="card" ng-repeat="book in suggestedBooks">
+            <div class="item item-divider">
+                {{book.title}}
+            </div>
+            <div class="item item-text-wrap">
+                {{book.author}}
+            </div>
+        </div>
+    </button>
     <br>
     <p> Not found? Input information below.</p>
     <ion-list>
@@ -22,6 +23,6 @@
         </ion-item>
     </ion-list>
 
-    <button ui-sref="app.sellerSetPrice" ion-button>Next</button>
+    <button class="button" ui-sref="app.sellerSetPrice">Next</button>
   </ion-content>
 </ion-view>

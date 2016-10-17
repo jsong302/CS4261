@@ -94,6 +94,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'SellerConfirmationCtrl'
       }
     }
+  })
+
+  .state('app.buyerSelectCourse', {
+    url: '/buyerSelectCourse',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/buyer_select_course.html',
+        controller: 'SellerConfirmationCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/selectRole');
