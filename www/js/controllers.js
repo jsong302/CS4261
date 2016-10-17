@@ -70,7 +70,6 @@ angular.module('starter.controllers', [])
     'EAS 1601',
     'ECE 2031',
     'CS 3251',
-    'ECE 2031',
     'ISYE 3770',
     'CS 4261',
     'CS 4699'
