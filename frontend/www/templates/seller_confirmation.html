@@ -1,0 +1,13 @@
+<ion-view view-title="Confirmation">
+  <ion-content>
+    <h1>Congratulations! Your textbook information is posted!</h1>
+    <p>Course Name: {{bookInfo.course}}</p>
+    <p>Instructor: {{bookInfo.instructor}}</p>
+    <p>Semester: {{bookInfo.semester}}</p>
+    <p>Book Name: {{bookInfo.title}}</p>
+    <p>Author: {{bookInfo.author}}</p>
+    <p>Price: {{bookInfo.price | currency}}</p>
+
+    <button class="button" ui-sref="app.selectRole">Home</button>
+  </ion-content>
+</ion-view>
