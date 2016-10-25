@@ -1,26 +1,29 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BuyerSuggestedBooks } from '../buyer-suggested-books/buyer-suggested-books';
+import {CourseService} from '../../providers/course-service';
 
 
 @Component({
-  templateUrl: 'buyer-select-course.html'
+  templateUrl: 'buyer-select-course.html',
+  providers: [CourseService]
 })
 export class BuyerSelectCourse {
-  courses: string[];
+  public courses: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.courses = [
-      'EAS 1601',
-      'ECE 2031',
-      'CS 3251',
-      'ISYE 3770',
-      'CS 4261',
-      'CS 4699'
-    ];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public courseService: CourseService) {
+    this.loadCourses();
   }
 
   openPage(course) {
     this.navCtrl.push(BuyerSuggestedBooks, {course: course});
   }
+
+  loadCourses(){
+    this.courseService.load()
+    .then(data => {
+      this.courses = data;
+    });
+  }
+
 }
