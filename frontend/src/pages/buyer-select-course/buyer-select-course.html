@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sellect Course</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h1>Which class are you buying textbook for?</h1>
+  <br>
+  <button ion-button *ngFor="let course of courses" color="primary" (click)="openPage(course)">{{course}}</button>
+</ion-content>

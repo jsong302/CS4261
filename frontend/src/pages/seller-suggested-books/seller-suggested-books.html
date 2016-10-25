@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Suggested Textbooks</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>We found these textbooks for CS 4261</h1>
+    <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">
+        <ion-card-header>{{book.title}}</ion-card-header>
+        <ion-card-content>{{book.author}}</ion-card-content>
+    </ion-card>
+
+    <br>
+    <p> Not found? Input information below.</p>
+    <ion-list>
+        <form #formData="ngForm" (ngSubmit)="onSubmit(formData.value)">
+            <ion-item>
+                <ion-label color="primary">Textbook Name</ion-label>
+                <ion-input type="text" ngControl="name" placeholder="The Study of Mobile Apps"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary">Author</ion-label>
+                <ion-input type="text" ngControl="author" placeholder="William Eason"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary">Edition</ion-label>
+                <ion-input type="text" ngControl="edition" placeholder="3rd"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary">ISBN</ion-label>
+                <ion-input type="number" ngControl="isbn" placeholder=""></ion-input>
+            </ion-item>
+            <button ion-button color="primary">Next</button>
+        </form>
+    </ion-list>
+</ion-content>

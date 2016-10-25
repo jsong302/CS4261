@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Confirmation</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>Congratulations! Your textbook information is posted!</h1>
+    <p>Course Name: {{course}}</p>
+    <p>Instructor: {{instructor}}</p>
+    <p>Semester: {{semester}}</p>
+    <p>Book Name: {{book.title}}</p>
+    <p>Author: {{book.author}}</p>
+    <p>Price: ${{price}}</p>
+
+    <!-- <button ion-button (click)="Utils.home(this.navCtrl)">Home</button> -->
+</ion-content>
