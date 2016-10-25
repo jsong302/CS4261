@@ -9,10 +9,10 @@
 
 <ion-content>
     <ion-list>
-        <form #formData="ngForm" (ngSubmit)="onSubmit(formData.value)">    
+        <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">    
             <ion-item>
                 <ion-label color="primary">I'm selling the book for</ion-label>
-                <ion-input type="number" ngControl="price" placeholder="$0.00"></ion-input>
+                <ion-input type="number" [(ngModel)]="form.price" ngControl="price" placeholder="$0.00"></ion-input>
             </ion-item>
             <button ion-button type="submit" color="primary">Next</button>
         </form>
