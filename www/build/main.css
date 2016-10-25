@@ -21106,11 +21106,10 @@ sub {
   }
 }
 
-.item-details-page div.selection {
-  font-size: 22px;
-  display: block;
-  text-align: center;
-  padding-top: 5%;
+.hello-ionic-page p {
+  margin: 20px 0;
+  line-height: 22px;
+  font-size: 16px;
 }
 
 .hello-ionic-page p {

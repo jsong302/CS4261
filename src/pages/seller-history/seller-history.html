@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h1>Pending Books</h1>
+    <ion-card *ngFor="let book of pendingBooks">
+    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>
+    <ion-card-content>
+      Author: {{book.author}}
+      <br>
+      Price: {{book.price | currency}}
+    </ion-card-content>
+    </ion-card>
+
+    <h1 text-left>Sold Books</h1>
+    <ion-card *ngFor="let book of soldBooks">
+    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>
+    <ion-card-content>
+      Author: {{book.author}}
+      <br>
+      Price: {{book.price | currency}}
+    </ion-card-content>
+    </ion-card>
+</ion-content>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BuyerSelectCourse } from '../buyer-select-course/buyer-select-course';
-import { SellerClassInfo } from '../seller-class-info/seller-class-info';
+import { SellerChooseFunctionality } from '../seller-choose-functionality/seller-choose-functionality';
 
 
 @Component({
@@ -20,6 +20,6 @@ export class SelectRole {
   }
 
   openSellerPage() {
-    this.navCtrl.push(SellerClassInfo, {});
+    this.navCtrl.push(SellerChooseFunctionality, {});
   }
 }

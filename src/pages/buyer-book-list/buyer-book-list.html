@@ -13,7 +13,7 @@
         <ion-item *ngFor="let seller of sellers">
             <p>Seller: {{seller.name}}</p>
             <p>Price: {{seller.price | currency}}</p>
-            <button ion-button color="primary" (click)="openPage(seller)">Request Book</button>
+            <button ion-button color="primary" (click)="openPage(seller)">Buy</button>
         </ion-item>
     </ion-list>
 </ion-content>
