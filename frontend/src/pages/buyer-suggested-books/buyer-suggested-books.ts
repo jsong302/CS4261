@@ -9,6 +9,7 @@ import { BuyerBookList } from '../buyer-book-list/buyer-book-list';
 export class BuyerSuggestedBooks {
   suggestedBooks: Array<{title: string, author: string}>;
   course: string;
+  form = {};
 
   constructor(private navCtrl: NavController, private navParams: NavParams) {
     this.course = navParams.get('course');
@@ -29,6 +30,6 @@ export class BuyerSuggestedBooks {
   }
 
   onSubmit(formData) {
-    this.openPage({title: formData.name, author: formData.author});
+    this.openPage(this.form);
   }
 }

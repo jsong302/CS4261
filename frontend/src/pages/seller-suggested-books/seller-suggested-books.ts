@@ -8,6 +8,7 @@ import { SellerSetPrice } from '../seller-set-price/seller-set-price';
 })
 export class SellerSuggestedBooks {
   suggestedBooks: Array<{title: string, author: string}>;
+  form = {};
 
   constructor(private navCtrl: NavController, private navParams: NavParams) {
     this.suggestedBooks = [
@@ -23,14 +24,15 @@ export class SellerSuggestedBooks {
   }
 
   openPage(suggestedBook) {
+    let classForm = this.navParams.get('classForm');
     this.navCtrl.push(SellerSetPrice, {
       book: suggestedBook,
-      course: this.navParams.get('course'),
-      instructor: this.navParams.get('instructor'),
-      semester: this.navParams.get('semester')});
+      course: classForm.course,
+      instructor: classForm.instructor,
+      semester: classForm.semester});
   }
 
-  onSubmit(formData) {
-    this.openPage({title: formData.name, author: formData.author});
+  onSubmit() {
+    this.openPage(this.form);
   }
 }

@@ -17,24 +17,24 @@
     <br>
     <p> Not found? Input information below.</p>
     <ion-list>
-        <form #formData="ngForm" (ngSubmit)="onSubmit(formData.value)">
+        <form (ngSubmit)="onSubmit()">
             <ion-item>
                 <ion-label color="primary">Textbook Name</ion-label>
-                <ion-input type="text" ngControl="name" placeholder="The Study of Mobile Apps"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Author</ion-label>
-                <ion-input type="text" ngControl="author" placeholder="William Eason"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Edition</ion-label>
-                <ion-input type="text" ngControl="edition" placeholder="3rd"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">ISBN</ion-label>
-                <ion-input type="number" ngControl="isbn" placeholder=""></ion-input>
+                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>
             </ion-item>
-            <button ion-button color="primary">Next</button>
+            <button ion-button type="submit" color="primary">Next</button>
         </form>
     </ion-list>
 </ion-content>

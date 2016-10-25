@@ -15,7 +15,8 @@ export class SellerConfirmation {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.book = this.navParams.get('book');
-    this.price = this.navParams.get('price');
+    let priceForm = this.navParams.get('priceForm');
+    this.price = priceForm.price;
     this.course = this.navParams.get('course');
     this.instructor = this.navParams.get('instructor');
     this.semester = this.navParams.get('semester');

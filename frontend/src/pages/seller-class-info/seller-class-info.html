@@ -9,20 +9,20 @@
 
 <ion-content>
     <ion-list>
-        <form #formData="ngForm" (ngSubmit)="onSubmit(formData.value)">    
+        <form (ngSubmit)="onSubmit()">    
             <ion-item>
                 <ion-label color="primary">Course Name</ion-label>
-                <ion-input type="text" ngControl="name" placeholder="CS 4261"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.course" name="course" placeholder="CS 4261"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Instructor</ion-label>
-                <ion-input type="text" ngControl="instructor" placeholder="William Eason"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.instructor" name="instructor" placeholder="William Eason"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Semester</ion-label>
-                <ion-input type="text" ngControl="semester" placeholder="Fall 2016"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.semester" name="semester" placeholder="Fall 2016"></ion-input>
             </ion-item>
-            <button ion-button color="primary">Next</button>
+            <button ion-button type="submit" color="primary">Next</button>
         </form>
     </ion-list>
 </ion-content>

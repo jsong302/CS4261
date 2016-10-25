@@ -7,14 +7,13 @@ import { SellerSuggestedBooks } from '../seller-suggested-books/seller-suggested
   templateUrl: 'seller-class-info.html'
 })
 export class SellerClassInfo {
+  form = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  onSubmit(formData) {
+  onSubmit() {
     this.navCtrl.push(SellerSuggestedBooks, {
-      course: formData.name,
-      instructor: formData.instructor,
-      semester: formData.semester});
+      classForm: this.form});
   }
 }
