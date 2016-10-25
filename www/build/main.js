@@ -81238,7 +81238,7 @@ var CourseService = (function () {
             // We're using Angular HTTP provider to request the data,
             // then on the response, it'll map the JSON data to a parsed JS object.
             // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/schedule/b')
+            _this.http.get('https://texchange-backend.herokuapp.com/schedule/gtid/s')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 // we've got back the raw data, now generate the core schedule data
