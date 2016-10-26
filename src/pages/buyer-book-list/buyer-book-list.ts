@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-//import { BuyerSuggestedBooks } from '../buyer-suggested-books/buyer-suggested-books';
+import { BuyerConfirmation } from '../buyer-confirmation/buyer-confirmation';
 
 
 @Component({
@@ -23,6 +23,8 @@ export class BuyerBookList {
   }
 
   openPage(seller) {
-    //this.navCtrl.push(BuyerSuggestedBooks, {course: course});
+    this.navCtrl.push(BuyerConfirmation, {
+      book: this.book,
+      seller: seller});
   }
 }

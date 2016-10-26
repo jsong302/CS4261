@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { Utils } from '../utils/utils';
+
+
+@Component({
+  templateUrl: 'buyer-confirmation.html'
+})
+export class BuyerConfirmation {
+  book: {title: string, author: string};
+  seller: {name: string, price: number};
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.book = this.navParams.get('book');
+    this.seller = this.navParams.get('seller');
+  }
+}
