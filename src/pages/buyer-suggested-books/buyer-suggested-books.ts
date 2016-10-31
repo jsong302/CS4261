@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BuyerBookList } from '../buyer-book-list/buyer-book-list';
-
+import {BookService} from '../../providers/book-service';
 
 @Component({
-  templateUrl: 'buyer-suggested-books.html'
+  templateUrl: 'buyer-suggested-books.html',
+  providers: [BookService]
 })
 export class BuyerSuggestedBooks {
   suggestedBooks: Array<{title: string, author: string}>;
