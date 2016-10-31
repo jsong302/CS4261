@@ -12,7 +12,7 @@
     <ion-list>
         <ion-item *ngFor="let seller of sellers">
             <p>Seller: {{seller.name}}</p>
-            <p>Price: {{seller.price | currency}}</p>
+            <p>Price: {{seller.price}}</p>
             <button ion-button color="primary" (click)="openPage(seller)">Buy</button>
         </ion-item>
     </ion-list>
