@@ -17,7 +17,7 @@ export class ListService {
     console.log('Hello ListService Provider');
   }
 
-  load(course: String, professor: String) {
+  load(isbn: String) {
 	  if (this.data) {
 	    // already loaded data
 	    return Promise.resolve(this.data);
@@ -27,7 +27,7 @@ export class ListService {
 	    // We're using Angular HTTP provider to request the data,
 	    // then on the response, it'll map the JSON data to a parsed JS object.
 	    // Next, we process the data and resolve the promise with the new data.
-	    this.http.get('https://texchange-backend.herokuapp.com/textbook/course/' + course + '/professor/' + professor)
+	    this.http.get('https://texchange-backend.herokuapp.com/listingforbuyer/isbn/' + isbn)
 	      .map(res => res.json())
 	      .subscribe(data => {
 	        // we've got back the raw data, now generate the core schedule data
