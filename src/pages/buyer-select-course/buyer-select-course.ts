@@ -16,7 +16,7 @@ export class BuyerSelectCourse {
   }
 
   openPage(course) {
-    this.navCtrl.push(BuyerSuggestedBooks, {course: course});
+    this.navCtrl.push(BuyerSuggestedBooks, {course: course.course_id, professor: course.professor});
   }
 
   loadCourses(){

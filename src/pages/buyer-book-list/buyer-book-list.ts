@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BuyerConfirmation } from '../buyer-confirmation/buyer-confirmation';
-import {BookService} from '../../providers/book-service';
 
 
 @Component({

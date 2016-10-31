@@ -81036,6 +81036,30 @@ setTimeout(function () {
     }
 }, DEVICE_READY_TIMEOUT);
 
+var __decorate$112 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$6 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var BuyerConfirmation = (function () {
+    function BuyerConfirmation(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.book = this.navParams.get('book');
+        this.seller = this.navParams.get('seller');
+    }
+    BuyerConfirmation = __decorate$112([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-confirmation\buyer-confirmation.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Confirmation</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n    <h1>Congratulations! Your bought a textbook!</h1>\n\n    <p>Book Name: {{book.title}}</p>\n\n    <p>Author: {{book.author}}</p>\n\n    <p>Seller: {{seller.name}}</p>\n\n    <p>Total: {{seller.price | currency}}</p>\n\n\n\n    <!-- <button ion-button (click)="Utils.home(this.navCtrl)">Home</button> -->\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-confirmation\buyer-confirmation.html"*/
+        }), 
+        __metadata$6('design:paramtypes', [NavController, NavParams])
+    ], BuyerConfirmation);
+    return BuyerConfirmation;
+}());
+
 var __decorate$111 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -81045,7 +81069,6 @@ var __decorate$111 = (undefined && undefined.__decorate) || function (decorators
 var __metadata$5 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-//import { BuyerSuggestedBooks } from '../buyer-suggested-books/buyer-suggested-books';
 var BuyerBookList = (function () {
     function BuyerBookList(navCtrl, navParams) {
         this.navCtrl = navCtrl;
@@ -81061,54 +81084,16 @@ var BuyerBookList = (function () {
         ];
     }
     BuyerBookList.prototype.openPage = function (seller) {
-        //this.navCtrl.push(BuyerSuggestedBooks, {course: course});
+        this.navCtrl.push(BuyerConfirmation, {
+            book: this.book,
+            seller: seller });
     };
     BuyerBookList = __decorate$111([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Book List</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <h1>Listings for Mobile Services Textbook</h1>\n\n    <ion-list>\n\n        <ion-item *ngFor="let seller of sellers">\n\n            <p>Seller: {{seller.name}}</p>\n\n            <p>Price: {{seller.price | currency}}</p>\n\n            <button ion-button color="primary" (click)="openPage(seller)">Request Book</button>\n\n        </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Book List</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n    <h1>Listings for {{book.title}}</h1>\n\n    <ion-list>\n\n        <ion-item *ngFor="let seller of sellers">\n\n            <p>Seller: {{seller.name}}</p>\n\n            <p>Price: {{seller.price | currency}}</p>\n\n            <button ion-button color="primary" (click)="openPage(seller)">Buy</button>\n\n        </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/
         }), 
         __metadata$5('design:paramtypes', [NavController, NavParams])
     ], BuyerBookList);
     return BuyerBookList;
-}());
-
-var __decorate$110 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata$4 = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var BuyerSuggestedBooks = (function () {
-    function BuyerSuggestedBooks(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.form = {};
-        this.course = navParams.get('course');
-        this.suggestedBooks = [
-            { title: 'Mobile Services Textbook',
-                author: 'John Smith, Steve Jones' },
-            { title: 'Guide to the BMC',
-                author: 'John Jacboson' },
-            { title: 'Information in the New Age',
-                author: 'John Jones, Joseph Park' },
-            { title: 'The Study of Mobile Apps',
-                author: 'John Jones, Robert Paulson' }
-        ];
-    }
-    BuyerSuggestedBooks.prototype.openPage = function (suggestedBook) {
-        this.navCtrl.push(BuyerBookList, { book: suggestedBook });
-    };
-    BuyerSuggestedBooks.prototype.onSubmit = function (formData) {
-        this.openPage(this.form);
-    };
-    BuyerSuggestedBooks = __decorate$110([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Suggested Textbooks</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <h1>We found these textbooks for CS 4261</h1>\n\n    <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">\n\n        <ion-card-header>{{book.title}}</ion-card-header>\n\n        <ion-card-content>{{book.author}}</ion-card-content>\n\n    </ion-card>\n\n\n\n    <br>\n\n    <p> Not found? Input information below.</p>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">\n\n            <ion-item>\n\n                <ion-label color="primary">Textbook Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Author</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Edition</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">ISBN</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/
-        }), 
-        __metadata$4('design:paramtypes', [NavController, NavParams])
-    ], BuyerSuggestedBooks);
-    return BuyerSuggestedBooks;
 }());
 
 var __extends$140 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
@@ -81206,13 +81191,114 @@ var Observable_1$4 = Observable_1$1;
 var map_1 = map_1$1;
 Observable_1$4.Observable.prototype.map = map_1.map;
 
-var __decorate$112 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$113 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$6 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$7 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/*
+  Generated class for the BookService provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
+var BookService = (function () {
+    function BookService(http) {
+        this.http = http;
+        this.data = null;
+        console.log('Hello BookService Provider');
+    }
+    BookService.prototype.load = function (course, professor) {
+        var _this = this;
+        if (this.data) {
+            // already loaded data
+            return Promise.resolve(this.data);
+        }
+        // don't have the data yet
+        return new Promise(function (resolve) {
+            // We're using Angular HTTP provider to request the data,
+            // then on the response, it'll map the JSON data to a parsed JS object.
+            // Next, we process the data and resolve the promise with the new data.
+            _this.http.get('https://texchange-backend.herokuapp.com/textbook/course/' + course + '/professor/' + professor)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                // we've got back the raw data, now generate the core schedule data
+                // and save the data for later reference
+                _this.data = data;
+                resolve(_this.data);
+            });
+        });
+    };
+    BookService.prototype.add = function (course, isbn, name, author, publisher, edition) {
+        //this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author=' + author + '&edition=' + edition + '&publisher=' + publisher);
+    };
+    BookService = __decorate$113([
+        Injectable(), 
+        __metadata$7('design:paramtypes', [Http])
+    ], BookService);
+    return BookService;
+}());
+
+var __decorate$110 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$4 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var BuyerSuggestedBooks = (function () {
+    function BuyerSuggestedBooks(navCtrl, navParams, bookService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.bookService = bookService;
+        this.form = {};
+        this.list = null;
+        this.suggestedBooks = [];
+        this.course = navParams.get('course');
+        this.professor = navParams.get('professor');
+        this.loadList();
+    }
+    BuyerSuggestedBooks.prototype.openPage = function (suggestedBook) {
+        this.navCtrl.push(BuyerBookList, { book: suggestedBook });
+    };
+    BuyerSuggestedBooks.prototype.onSubmit = function () {
+        console.log(this.form);
+        //this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
+        //this.openPage(this.form);
+    };
+    BuyerSuggestedBooks.prototype.loadList = function () {
+        var _this = this;
+        this.bookService.load(this.course, this.professor)
+            .then(function (data) {
+            _this.list = data;
+            for (var _i = 0, _a = _this.list; _i < _a.length; _i++) {
+                var l = _a[_i];
+                _this.suggestedBooks.push({ title: l.title, author: l.author, isbn: l.isbn });
+            }
+        });
+    };
+    BuyerSuggestedBooks = __decorate$110([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Suggested Textbooks</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <h1>We found these textbooks for {{course}}</h1>\n\n    <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">\n\n        <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n\n        <ion-card-content>{{book.author}}</ion-card-content>\n\n    </ion-card>\n\n\n\n    <br>\n\n    <p> Not found? Input information below.</p>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">\n\n            <ion-item>\n\n                <ion-label color="primary">Textbook Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Author</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Edition</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">ISBN</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/,
+            providers: [BookService]
+        }), 
+        __metadata$4('design:paramtypes', [NavController, NavParams, BookService])
+    ], BuyerSuggestedBooks);
+    return BuyerSuggestedBooks;
+}());
+
+var __decorate$114 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$8 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 /*
@@ -81248,9 +81334,9 @@ var CourseService = (function () {
             });
         });
     };
-    CourseService = __decorate$112([
+    CourseService = __decorate$114([
         Injectable(), 
-        __metadata$6('design:paramtypes', [Http])
+        __metadata$8('design:paramtypes', [Http])
     ], CourseService);
     return CourseService;
 }());
@@ -81272,7 +81358,7 @@ var BuyerSelectCourse = (function () {
         this.loadCourses();
     }
     BuyerSelectCourse.prototype.openPage = function (course) {
-        this.navCtrl.push(BuyerSuggestedBooks, { course: course });
+        this.navCtrl.push(BuyerSuggestedBooks, { course: course.course_id, professor: course.professor });
     };
     BuyerSelectCourse.prototype.loadCourses = function () {
         var _this = this;
@@ -81282,7 +81368,7 @@ var BuyerSelectCourse = (function () {
         });
     };
     BuyerSelectCourse = __decorate$109([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-select-course\buyer-select-course.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Sellect Course</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <h1>Which class are you buying textbook for?</h1>\n\n  <br>\n\n  <button ion-button *ngFor="let course of courses" color="primary" (click)="openPage(course)">{{course}}</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-select-course\buyer-select-course.html"*/,
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-select-course\buyer-select-course.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Sellect Course</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n  <h1>Which class are you buying textbook for?</h1>\n\n  <br>\n\n  <button ion-button *ngFor="let course of courses" color="primary" (click)="openPage(course)">{{course.course_id}}</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-select-course\buyer-select-course.html"*/,
             providers: [CourseService]
         }), 
         __metadata$3('design:paramtypes', [NavController, NavParams, CourseService])
@@ -81290,13 +81376,13 @@ var BuyerSelectCourse = (function () {
     return BuyerSelectCourse;
 }());
 
-var __decorate$116 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$119 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$10 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$13 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var SellerConfirmation = (function () {
@@ -81310,21 +81396,21 @@ var SellerConfirmation = (function () {
         this.instructor = this.navParams.get('instructor');
         this.semester = this.navParams.get('semester');
     }
-    SellerConfirmation = __decorate$116([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-confirmation\seller-confirmation.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Confirmation</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <h1>Congratulations! Your textbook information is posted!</h1>\n\n    <p>Course Name: {{course}}</p>\n\n    <p>Instructor: {{instructor}}</p>\n\n    <p>Semester: {{semester}}</p>\n\n    <p>Book Name: {{book.title}}</p>\n\n    <p>Author: {{book.author}}</p>\n\n    <p>Price: {{price | currency}}</p>\n\n\n\n    <!-- <button ion-button (click)="Utils.home(this.navCtrl)">Home</button> -->\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-confirmation\seller-confirmation.html"*/
+    SellerConfirmation = __decorate$119([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-confirmation\seller-confirmation.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Confirmation</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n    <h1>Congratulations! Your textbook information is posted!</h1>\n\n    <p>Course Name: {{course}}</p>\n\n    <p>Instructor: {{instructor}}</p>\n\n    <p>Semester: {{semester}}</p>\n\n    <p>Book Name: {{book.title}}</p>\n\n    <p>Author: {{book.author}}</p>\n\n    <p>Price: {{price | currency}}</p>\n\n\n\n    <!-- <button ion-button (click)="Utils.home(this.navCtrl)">Home</button> -->\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-confirmation\seller-confirmation.html"*/
         }), 
-        __metadata$10('design:paramtypes', [NavController, NavParams])
+        __metadata$13('design:paramtypes', [NavController, NavParams])
     ], SellerConfirmation);
     return SellerConfirmation;
 }());
 
-var __decorate$115 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$118 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$9 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var SellerSetPrice = (function () {
@@ -81341,21 +81427,21 @@ var SellerSetPrice = (function () {
             semester: this.navParams.get('semester'),
             priceForm: this.form });
     };
-    SellerSetPrice = __decorate$115([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-set-price\seller-set-price.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Set Price</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">    \n\n            <ion-item>\n\n                <ion-label color="primary">I\'m selling the book for</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.price" name="price" placeholder="$0.00"></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-set-price\seller-set-price.html"*/
+    SellerSetPrice = __decorate$118([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-set-price\seller-set-price.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Set Price</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">    \n\n            <ion-item>\n\n                <ion-label color="primary">I\'m selling the book for</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.price" name="price" placeholder="$0.00"></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-set-price\seller-set-price.html"*/
         }), 
-        __metadata$9('design:paramtypes', [NavController, NavParams])
+        __metadata$12('design:paramtypes', [NavController, NavParams])
     ], SellerSetPrice);
     return SellerSetPrice;
 }());
 
-var __decorate$114 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$117 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$8 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$11 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var SellerSuggestedBooks = (function () {
@@ -81385,21 +81471,21 @@ var SellerSuggestedBooks = (function () {
     SellerSuggestedBooks.prototype.onSubmit = function () {
         this.openPage(this.form);
     };
-    SellerSuggestedBooks = __decorate$114([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-suggested-books\seller-suggested-books.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Suggested Textbooks</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <h1>We found these textbooks for CS 4261</h1>\n\n    <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">\n\n        <ion-card-header>{{book.title}}</ion-card-header>\n\n        <ion-card-content>{{book.author}}</ion-card-content>\n\n    </ion-card>\n\n\n\n    <br>\n\n    <p> Not found? Input information below.</p>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">\n\n            <ion-item>\n\n                <ion-label color="primary">Textbook Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Author</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Edition</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">ISBN</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-suggested-books\seller-suggested-books.html"*/
+    SellerSuggestedBooks = __decorate$117([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-suggested-books\seller-suggested-books.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Suggested Textbooks</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <h1>We found these textbooks for CS 4261</h1>\n\n    <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">\n\n        <ion-card-header>{{book.title}}</ion-card-header>\n\n        <ion-card-content>{{book.author}}</ion-card-content>\n\n    </ion-card>\n\n\n\n    <br>\n\n    <p> Not found? Input information below.</p>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">\n\n            <ion-item>\n\n                <ion-label color="primary">Textbook Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Author</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Edition</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">ISBN</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-suggested-books\seller-suggested-books.html"*/
         }), 
-        __metadata$8('design:paramtypes', [NavController, NavParams])
+        __metadata$11('design:paramtypes', [NavController, NavParams])
     ], SellerSuggestedBooks);
     return SellerSuggestedBooks;
 }());
 
-var __decorate$113 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$116 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$7 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$10 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var SellerClassInfo = (function () {
@@ -81412,12 +81498,80 @@ var SellerClassInfo = (function () {
         this.navCtrl.push(SellerSuggestedBooks, {
             classForm: this.form });
     };
-    SellerClassInfo = __decorate$113([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-class-info\seller-class-info.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Class Info</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">    \n\n            <ion-item>\n\n                <ion-label color="primary">Course Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.course" name="course" placeholder="CS 4261"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Instructor</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.instructor" name="instructor" placeholder="William Eason"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Semester</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.semester" name="semester" placeholder="Fall 2016"></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-class-info\seller-class-info.html"*/
+    SellerClassInfo = __decorate$116([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-class-info\seller-class-info.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Class Info</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">    \n\n            <ion-item>\n\n                <ion-label color="primary">Course Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.course" name="course" placeholder="CS 4261"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Instructor</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.instructor" name="instructor" placeholder="William Eason"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary">Semester</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.semester" name="semester" placeholder="Fall 2016"></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-class-info\seller-class-info.html"*/
         }), 
-        __metadata$7('design:paramtypes', [NavController, NavParams])
+        __metadata$10('design:paramtypes', [NavController, NavParams])
     ], SellerClassInfo);
     return SellerClassInfo;
+}());
+
+var __decorate$120 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$14 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var SellerHistory = (function () {
+    function SellerHistory(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.soldBooks = [
+            { title: 'Mobile Services Textbook',
+                author: 'John Smith, Steve Jones',
+                price: 100.50 },
+            { title: 'Guide to the BMC',
+                author: 'John Jacboson',
+                price: 200.75 }
+        ];
+        this.pendingBooks = [
+            { title: 'Information in the New Age',
+                author: 'John Jones, Joseph Park',
+                price: 55.25 },
+            { title: 'The Study of Mobile Apps',
+                author: 'John Jones, Robert Paulson',
+                price: 98.75 }
+        ];
+    }
+    SellerHistory = __decorate$120([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-history\seller-history.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>History</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <h1>Pending Books</h1>\n\n    <ion-card *ngFor="let book of pendingBooks">\n\n    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n\n    <ion-card-content>\n\n      Author: {{book.author}}\n\n      <br>\n\n      Price: {{book.price | currency}}\n\n    </ion-card-content>\n\n    </ion-card>\n\n\n\n    <h1 text-left>Sold Books</h1>\n\n    <ion-card *ngFor="let book of soldBooks">\n\n    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n\n    <ion-card-content>\n\n      Author: {{book.author}}\n\n      <br>\n\n      Price: {{book.price | currency}}\n\n    </ion-card-content>\n\n    </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-history\seller-history.html"*/
+        }), 
+        __metadata$14('design:paramtypes', [NavController, NavParams])
+    ], SellerHistory);
+    return SellerHistory;
+}());
+
+var __decorate$115 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$9 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var SellerChooseFunctionality = (function () {
+    function SellerChooseFunctionality(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    SellerChooseFunctionality.prototype.openPage = function (page) {
+        this.navCtrl.push(page, {});
+    };
+    SellerChooseFunctionality.prototype.sellBook = function () {
+        this.navCtrl.push(SellerClassInfo, {});
+    };
+    SellerChooseFunctionality.prototype.viewHistory = function () {
+        this.navCtrl.push(SellerHistory, {});
+    };
+    SellerChooseFunctionality = __decorate$115([
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-choose-functionality\seller-choose-functionality.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Choose Functionality</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content text-center>\n\n\n\n  <h3>I want to...</h3>\n\n\n\n  <p>\n\n    <button ion-button color="primary" (click)="sellBook()">Sell Textbook</button>\n\n    <button ion-button color="primary" (click)="viewHistory()">View Pending/Sold Textbook</button>\n\n  </p>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-choose-functionality\seller-choose-functionality.html"*/
+        }), 
+        __metadata$9('design:paramtypes', [NavController])
+    ], SellerChooseFunctionality);
+    return SellerChooseFunctionality;
 }());
 
 var __decorate$108 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -81440,10 +81594,10 @@ var SelectRole = (function () {
         this.navCtrl.push(BuyerSelectCourse, {});
     };
     SelectRole.prototype.openSellerPage = function () {
-        this.navCtrl.push(SellerClassInfo, {});
+        this.navCtrl.push(SellerChooseFunctionality, {});
     };
     SelectRole = __decorate$108([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\select-role\select-role.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Select Role</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <h3>I am a...</h3>\n\n\n\n  <p>\n\n    <button ion-button color="primary" (click)="openBuyerPage()">Buyer</button>\n\n    <button ion-button color="primary" (click)="openSellerPage()">Seller</button>\n\n  </p>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\select-role\select-role.html"*/
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\select-role\select-role.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Select Role</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content text-center>\n\n\n\n  <h3>I am a...</h3>\n\n\n\n  <p>\n\n    <button ion-button color="primary" (click)="openBuyerPage()">Buyer</button>\n\n    <button ion-button color="primary" (click)="openSellerPage()">Seller</button>\n\n  </p>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\select-role\select-role.html"*/
         }), 
         __metadata$2('design:paramtypes', [NavController])
     ], SelectRole);
@@ -81489,74 +81643,11 @@ var MyApp = (function () {
         __metadata$1('design:type', Nav)
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate$1([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\app\app.html"*/'<ion-menu [content]="content">\n\n\n\n  <ion-header>\n\n    <ion-toolbar>\n\n      <ion-title>Pages</ion-title>\n\n    </ion-toolbar>\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n    <ion-list>\n\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n        {{p.title}}\n\n      </button>\n\n    </ion-list>\n\n  </ion-content>\n\n\n\n</ion-menu>\n\n\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\app\app.html"*/
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\app\app.html"*/'<ion-menu [content]="content">\n\n\n\n  <ion-header color="primary">\n\n    <ion-toolbar>\n\n      <ion-title>Pages</ion-title>\n\n    </ion-toolbar>\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n    <ion-list>\n\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n        {{p.title}}\n\n      </button>\n\n    </ion-list>\n\n  </ion-content>\n\n\n\n</ion-menu>\n\n\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\app\app.html"*/
         }), 
         __metadata$1('design:paramtypes', [Platform, MenuController])
     ], MyApp);
     return MyApp;
-}());
-
-var __decorate$117 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata$11 = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var ItemDetailsPage = (function () {
-    function ItemDetailsPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        // If we navigated to this page, we will have an item available as a nav param
-        this.selectedItem = navParams.get('item');
-    }
-    ItemDetailsPage = __decorate$117([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\item-details\item-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button menuToggle *ngIf="!selectedItem">\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Item Details</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n <div *ngIf="selectedItem" class="selection">\n\n    <b>{{selectedItem.title}}</b>\n\n    <ion-icon name="{{selectedItem.icon}}"></ion-icon>\n\n    <div>\n\n      You navigated here from <b>{{selectedItem.title}}</b>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\item-details\item-details.html"*/
-        }), 
-        __metadata$11('design:paramtypes', [NavController, NavParams])
-    ], ItemDetailsPage);
-    return ItemDetailsPage;
-}());
-
-var __decorate$118 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var ListPage = (function () {
-    function ListPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        // If we navigated to this page, we will have an item available as a nav param
-        this.selectedItem = navParams.get('item');
-        this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-            'american-football', 'boat', 'bluetooth', 'build'];
-        this.items = [];
-        for (var i = 1; i < 11; i++) {
-            this.items.push({
-                title: 'Item ' + i,
-                note: 'This is item #' + i,
-                icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-            });
-        }
-    }
-    ListPage.prototype.itemTapped = function (event, item) {
-        this.navCtrl.push(ItemDetailsPage, {
-            item: item
-        });
-    };
-    ListPage = __decorate$118([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\list\list.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>My First List</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n\n      <ion-icon name="{{item.icon}}" item-left></ion-icon>\n\n      {{item.title}}\n\n      <div class="item-note" item-right>\n\n        {{item.note}}\n\n      </div>\n\n    </button>\n\n  </ion-list>\n\n  <div *ngIf="selectedItem" padding>\n\n    You navigated here from <b>{{selectedItem.title}}</b>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\list\list.html"*/
-        }), 
-        __metadata$12('design:paramtypes', [NavController, NavParams])
-    ], ListPage);
-    return ListPage;
 }());
 
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -81576,11 +81667,12 @@ var AppModule = (function () {
             declarations: [
                 MyApp,
                 SelectRole,
-                ItemDetailsPage,
-                ListPage,
                 BuyerSelectCourse,
                 BuyerSuggestedBooks,
                 BuyerBookList,
+                BuyerConfirmation,
+                SellerChooseFunctionality,
+                SellerHistory,
                 SellerClassInfo,
                 SellerSuggestedBooks,
                 SellerSetPrice,
@@ -81593,11 +81685,12 @@ var AppModule = (function () {
             entryComponents: [
                 MyApp,
                 SelectRole,
-                ItemDetailsPage,
-                ListPage,
                 BuyerSelectCourse,
                 BuyerSuggestedBooks,
                 BuyerBookList,
+                BuyerConfirmation,
+                SellerChooseFunctionality,
+                SellerHistory,
                 SellerClassInfo,
                 SellerSuggestedBooks,
                 SellerSetPrice,

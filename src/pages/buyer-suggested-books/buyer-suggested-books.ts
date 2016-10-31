@@ -8,29 +8,38 @@ import {BookService} from '../../providers/book-service';
   providers: [BookService]
 })
 export class BuyerSuggestedBooks {
-  suggestedBooks: Array<{title: string, author: string}>;
+  suggestedBooks: Array<{title: string, author: string, isbn: string}>;
   course: string;
+  professor: string;
+  public list: any;
   form = {};
 
-  constructor(private navCtrl: NavController, private navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, public bookService: BookService) {
+    this.list = null;
+    this.suggestedBooks = [];
     this.course = navParams.get('course');
-    this.suggestedBooks = [
-      {title: 'Mobile Services Textbook',
-      author: 'John Smith, Steve Jones'},
-      {title: 'Guide to the BMC',
-      author: 'John Jacboson'},
-      {title: 'Information in the New Age',
-      author: 'John Jones, Joseph Park'},
-      {title: 'The Study of Mobile Apps',
-      author: 'John Jones, Robert Paulson'}
-    ];
+    this.professor = navParams.get('professor');
+    this.loadList();
   }
 
   openPage(suggestedBook) {
     this.navCtrl.push(BuyerBookList, {book: suggestedBook});
   }
 
-  onSubmit(formData) {
-    this.openPage(this.form);
+  onSubmit() {
+    console.log(this.form);
+    //this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
+    //this.openPage(this.form);
+  }
+
+  loadList(){
+    this.bookService.load(this.course, this.professor)
+    .then(data => {
+      this.list = data;
+      for(let l of this.list) {
+        this.suggestedBooks.push({title: l.title, author: l.author, isbn: l.isbn});
+      }
+    });
+    
   }
 }

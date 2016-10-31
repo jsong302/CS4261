@@ -3,18 +3,18 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the BookService provider.
+  Generated class for the ListService provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class BookService {
-  data: any;
+export class ListService {
+	data: any;
 
   constructor(public http: Http) {
     this.data = null;
-    console.log('Hello BookService Provider');
+    console.log('Hello ListService Provider');
   }
 
   load(course: String, professor: String) {
@@ -22,7 +22,6 @@ export class BookService {
 	    // already loaded data
 	    return Promise.resolve(this.data);
 	  }
-
 	  // don't have the data yet
 	  return new Promise(resolve => {
 	    // We're using Angular HTTP provider to request the data,
@@ -37,10 +36,6 @@ export class BookService {
 	        resolve(this.data);
 	      });
 	  });
-	}
-
-	add(course: String, isbn: String, name: String, author: String, publisher: String, edition: String) {
-		//this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author=' + author + '&edition=' + edition + '&publisher=' + publisher);
 	}
 
 }
