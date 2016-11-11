@@ -7,7 +7,10 @@ import { SellerSuggestedBooks } from '../seller-suggested-books/seller-suggested
   templateUrl: 'seller-class-info.html'
 })
 export class SellerClassInfo {
-  form = {};
+  form = {
+    semester: '',
+    course: '',
+    instructor: ''};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

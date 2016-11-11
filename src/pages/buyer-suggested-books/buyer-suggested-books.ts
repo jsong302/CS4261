@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BuyerBookList } from '../buyer-book-list/buyer-book-list';
-import {BookService} from '../../providers/book-service';
+import { BookService } from '../../providers/book-service';
 
 @Component({
   templateUrl: 'buyer-suggested-books.html',
@@ -12,7 +12,11 @@ export class BuyerSuggestedBooks {
   course: string;
   professor: string;
   public list: any;
-  form = {};
+  form = {
+    title: '',
+    edition: '',
+    author: '',
+    isbn: ''};
 
   constructor(private navCtrl: NavController, private navParams: NavParams, public bookService: BookService) {
     this.list = null;

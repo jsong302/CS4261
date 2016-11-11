@@ -8,7 +8,11 @@ import { SellerSetPrice } from '../seller-set-price/seller-set-price';
 })
 export class SellerSuggestedBooks {
   suggestedBooks: Array<{title: string, author: string}>;
-  form = {};
+  form = {
+    title: '',
+    author: '',
+    edition: '',
+    isbn: ''};
 
   constructor(private navCtrl: NavController, private navParams: NavParams) {
     this.suggestedBooks = [
