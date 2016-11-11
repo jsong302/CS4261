@@ -81053,7 +81053,7 @@ var BuyerConfirmation = (function () {
         this.seller = this.navParams.get('seller');
     }
     BuyerConfirmation = __decorate$112([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-confirmation\buyer-confirmation.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Confirmation</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n    <h1>Congratulations! Your bought a textbook!</h1>\n\n    <p>Book Name: {{book.title}}</p>\n\n    <p>Author: {{book.author}}</p>\n\n    <p>Seller: {{seller.name}}</p>\n\n    <p>Total: {{seller.price}}</p>\n\n\n\n    <!-- <button ion-button (click)="Utils.home(this.navCtrl)">Home</button> -->\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-confirmation\buyer-confirmation.html"*/
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-confirmation\buyer-confirmation.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n        <ion-title>Confirmation</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center>\n\n    <h1>Congratulations! Your bought a textbook!</h1>\n\n    <p>Book Name: {{book.title}}</p>\n\n    <p>Author: {{book.author}}</p>\n\n    <p>Seller: {{seller.name}}</p>\n\n    <p>Total: {{seller.price}}</p>\n\n\n\n    <button ion-button (click)="Utils.home(this.navCtrl)">Home</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-confirmation\buyer-confirmation.html"*/
         }), 
         __metadata$6('design:paramtypes', [NavController, NavParams])
     ], BuyerConfirmation);
@@ -81291,7 +81291,7 @@ var BookService = (function () {
         });
     };
     BookService.prototype.add = function (course, isbn, name, author, publisher, edition) {
-        //this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author=' + author + '&edition=' + edition + '&publisher=' + publisher);
+        this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author[0]=' + author + '&edition=' + edition + '&publisher=' + publisher, "");
     };
     BookService = __decorate$114([
         Injectable(), 

@@ -40,7 +40,7 @@ export class BookService {
 	}
 
 	add(course: String, isbn: String, name: String, author: String, publisher: String, edition: String) {
-		//this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author=' + author + '&edition=' + edition + '&publisher=' + publisher);
+		this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author[0]=' + author + '&edition=' + edition + '&publisher=' + publisher, "");
 	}
 
 }
