@@ -1,20 +1,24 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
+    <!-- <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button>
+    </button> -->
     <ion-title>Select Role</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content text-center>
+<ion-content text-center padding-left padding-right padding-top class="select-role-page">
 
   <h3>I am a...</h3>
 
   <p>
-    <button ion-button color="primary" (click)="openBuyerPage()">Buyer</button>
-    <button ion-button color="primary" (click)="openSellerPage()">Seller</button>
+    <button ion-button color="primary" (click)="openBuyerPage()">
+      Buyer
+    </button><br>
+    <button ion-button color="primary" (click)="openSellerPage()">
+      Seller
+    </button>
   </p>
 
 </ion-content>

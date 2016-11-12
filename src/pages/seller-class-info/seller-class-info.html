@@ -3,24 +3,24 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Class Info</ion-title>
+        <ion-title>What class did you use this textbook for?</ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content text-center>
+<ion-content text-center padding-left padding-right>
     <ion-list>
         <form (ngSubmit)="onSubmit()">    
             <ion-item>
                 <ion-label color="primary">Course Name</ion-label>
-                <ion-input type="text" [(ngModel)]="form.course" name="course" placeholder="CS 4261"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.course" name="course" placeholder="CS 4261" required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Instructor</ion-label>
-                <ion-input type="text" [(ngModel)]="form.instructor" name="instructor" placeholder="William Eason"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.instructor" name="instructor" placeholder="William Eason" required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Semester</ion-label>
-                <ion-input type="text" [(ngModel)]="form.semester" name="semester" placeholder="Fall 2016"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.semester" name="semester" placeholder="Fall 2016" required></ion-input>
             </ion-item>
             <button ion-button type="submit" color="primary">Next</button>
         </form>

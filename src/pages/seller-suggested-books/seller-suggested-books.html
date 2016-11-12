@@ -7,12 +7,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <h1>We found these textbooks for CS 4261</h1>
-    <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">
-        <ion-card-header>{{book.title}}</ion-card-header>
-        <ion-card-content>{{book.author}}</ion-card-content>
-    </ion-card>
+<ion-content padding-left padding-right>
+    <div *ngIf="suggestedBooks.length > 0">
+        <h3>We found these textbooks that were used in {{course}}</h3>
+        <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">
+            <ion-card-header>{{book.title}}</ion-card-header>
+            <ion-card-content>
+                {{book.author}}<br>
+                <!-- {{book.edition}}<br> -->
+                {{book.isbn}}
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="suggestedBooks.length == 0">
+        <h3>Uh-oh! We didn't find any textbooks associated with {{course}}.</h3>
+    </div>
 
     <br>
     <p> Not found? Input information below.</p>
@@ -20,19 +29,19 @@
         <form (ngSubmit)="onSubmit()">
             <ion-item>
                 <ion-label color="primary">Textbook Name</ion-label>
-                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps" required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Author</ion-label>
-                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason" required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">Edition</ion-label>
-                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd" required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary">ISBN</ion-label>
-                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>
+                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder="" required></ion-input>
             </ion-item>
             <button ion-button type="submit" color="primary">Next</button>
         </form>
