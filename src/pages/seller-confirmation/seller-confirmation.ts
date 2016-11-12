@@ -10,7 +10,7 @@ export class SellerConfirmation {
   course: string;
   instructor: string;
   semester: string;
-  book: {title: string, author: string};
+  book: {title: string, author: string, edition: string, isbn: string};
   price: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

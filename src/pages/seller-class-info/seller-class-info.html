@@ -11,15 +11,15 @@
     <ion-list>
         <form (ngSubmit)="onSubmit()">    
             <ion-item>
-                <ion-label color="primary">Course Name</ion-label>
+                <ion-label color="secondary">Course Name</ion-label>
                 <ion-input type="text" [(ngModel)]="form.course" name="course" placeholder="CS 4261" required></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary">Instructor</ion-label>
+                <ion-label color="secondary">Instructor</ion-label>
                 <ion-input type="text" [(ngModel)]="form.instructor" name="instructor" placeholder="William Eason" required></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary">Semester</ion-label>
+                <ion-label color="secondary">Semester</ion-label>
                 <ion-input type="text" [(ngModel)]="form.semester" name="semester" placeholder="Fall 2016" required></ion-input>
             </ion-item>
             <button ion-button type="submit" color="primary">Next</button>

@@ -28,19 +28,19 @@
     <ion-list>
         <form (ngSubmit)="onSubmit()">
             <ion-item>
-                <ion-label color="primary">Textbook Name</ion-label>
+                <ion-label color="secondary">Textbook Name</ion-label>
                 <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps" required></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary">Author</ion-label>
+                <ion-label color="secondary">Author</ion-label>
                 <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason" required></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary">Edition</ion-label>
+                <ion-label color="secondary">Edition</ion-label>
                 <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary">ISBN</ion-label>
+                <ion-label color="secondary">ISBN</ion-label>
                 <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>
             </ion-item>
             <button ion-button type="submit" color="primary">Next</button>

@@ -7,7 +7,7 @@ import { Utils } from '../utils/utils';
   templateUrl: 'buyer-confirmation.html'
 })
 export class BuyerConfirmation {
-  book: {title: string, author: string};
+  book: {title: string, author: string, edition: string, isbn: string};
   seller: {name: string, price: number};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
