@@ -21,4 +21,8 @@ export class SellerConfirmation {
     this.instructor = this.navParams.get('instructor');
     this.semester = this.navParams.get('semester');
   }
+
+  popRoot() {
+    this.navCtrl.popToRoot();
+  }
 }

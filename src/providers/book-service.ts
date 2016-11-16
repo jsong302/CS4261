@@ -18,10 +18,10 @@ export class BookService {
   }
 
   load(course: String, professor: String) {
-	  if (this.data) {
+	  /*if (this.data) {
 	    // already loaded data
 	    return Promise.resolve(this.data);
-	  }
+	  }*/
 
 	  // don't have the data yet
 	  return new Promise(resolve => {
@@ -39,8 +39,21 @@ export class BookService {
 	  });
 	}
 
-	add(course: String, isbn: String, name: String, author: String, publisher: String, edition: String) {
-		//this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author=' + author + '&edition=' + edition + '&publisher=' + publisher);
+	add(course: String, professor: String, isbn: String, name: String, author: String, publisher: String, edition: String) {
+		return new Promise(resolve => {
+	    // We're using Angular HTTP provider to request the data,
+	    // then on the response, it'll map the JSON data to a parsed JS object.
+	    // Next, we process the data and resolve the promise with the new data.
+	    this.http.get('https://texchange-backend.herokuapp.com/addtextbook/course/' + course + '/professor/' + professor + '?isbn=' + isbn + '&name=' + name + '&author[0]=' + author + '&edition=' + edition + '&publisher=' + publisher)
+	      .map(res => res.json())
+	      .subscribe(data => {
+	        // we've got back the raw data, now generate the core schedule data
+	        // and save the data for later reference
+	        this.data = data;
+	        resolve(this.data);
+	      });
+	  });
+		
 	}
 
 }

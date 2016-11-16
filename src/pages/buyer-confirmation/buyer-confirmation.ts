@@ -14,4 +14,9 @@ export class BuyerConfirmation {
     this.book = this.navParams.get('book');
     this.seller = this.navParams.get('seller');
   }
+
+  popRoot() {
+    this.navCtrl.popToRoot();
+  }
+
 }

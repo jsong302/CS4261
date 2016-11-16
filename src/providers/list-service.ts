@@ -38,4 +38,53 @@ export class ListService {
 	  });
 	}
 
+	purchase(id: String) {
+		return new Promise(resolve => {
+	    // We're using Angular HTTP provider to request the data,
+	    // then on the response, it'll map the JSON data to a parsed JS object.
+	    // Next, we process the data and resolve the promise with the new data.
+	    this.http.get('https://texchange-backend.herokuapp.com/buyerpurchase/buyer/akim316/listingid/' + id)
+	      .map(res => res.json())
+	      .subscribe(data => {
+	        // we've got back the raw data, now generate the core schedule data
+	        // and save the data for later reference
+	        this.data = data;
+	        resolve(this.data);
+	      });
+	  });
+		
+	}
+
+	request(cost: String, isbn: String) {
+		return new Promise(resolve => {
+	    // We're using Angular HTTP provider to request the data,
+	    // then on the response, it'll map the JSON data to a parsed JS object.
+	    // Next, we process the data and resolve the promise with the new data.
+	    this.http.get('https://texchange-backend.herokuapp.com/buyerrequest/buyer/akim316?cost=' + cost + '&isbn=' + isbn)
+	      .map(res => res.json())
+	      .subscribe(data => {
+	        // we've got back the raw data, now generate the core schedule data
+	        // and save the data for later reference
+	        this.data = data;
+	        resolve(this.data);
+	      });
+	  });
+	}
+
+	sell(cost: String, isbn: String) {
+		return new Promise(resolve => {
+	    // We're using Angular HTTP provider to request the data,
+	    // then on the response, it'll map the JSON data to a parsed JS object.
+	    // Next, we process the data and resolve the promise with the new data.
+	    this.http.get('https://texchange-backend.herokuapp.com/sellerpost/seller/akim316?cost=' + cost + '&isbn=' + isbn)
+	      .map(res => res.json())
+	      .subscribe(data => {
+	        // we've got back the raw data, now generate the core schedule data
+	        // and save the data for later reference
+	        this.data = data;
+	        resolve(this.data);
+	      });
+	  });
+	}
+
 }
