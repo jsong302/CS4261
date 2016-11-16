@@ -7,13 +7,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content text-center>
-    <h1>Listings for {{book.title}}</h1>
+<ion-content text-center padding-left padding-right>
+  <div *ngIf="sellers.length > 0">
+    <h3>Listings for {{book.title}}</h3>
     <ion-list>
         <ion-item *ngFor="let seller of sellers">
             <p>Seller: {{seller.name}}</p>
             <p>Price: {{seller.price}}</p>
-            <button ion-button color="primary" (click)="openPage(seller)">Buy</button>
+            <button ion-button color="primary" (click)="openPage(seller)">Request</button>
         </ion-item>
     </ion-list>
+  </div>
+  <div *ngIf="sellers.length == 0">
+    <h3>Sorry! We don't have any listing for {{book.title}} right now. Come back later!</h3>
+  </div>
 </ion-content>

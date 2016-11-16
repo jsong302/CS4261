@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Utils } from '../utils/utils';
+// import { Utils } from '../utils/utils';
 
 
 @Component({
@@ -10,7 +10,7 @@ export class SellerConfirmation {
   course: string;
   instructor: string;
   semester: string;
-  book: {title: string, author: string};
+  book: {title: string, author: string, edition: string, isbn: string};
   price: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

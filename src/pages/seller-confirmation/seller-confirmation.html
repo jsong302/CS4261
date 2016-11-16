@@ -7,14 +7,16 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content text-center>
-    <h1>Congratulations! Your textbook information is posted!</h1>
+<ion-content text-center padding-left padding-right>
+    <h3>Congratulations! Your textbook information is posted!</h3>
     <p>Course Name: {{course}}</p>
     <p>Instructor: {{instructor}}</p>
     <p>Semester: {{semester}}</p>
     <p>Book Name: {{book.title}}</p>
     <p>Author: {{book.author}}</p>
-    <p>Price: {{price | currency}}</p>
+    <!-- <p>Edition: {{book.edition}}</p> -->
+    <p>ISBN: {{book.isbn}}</p>
+    <p>Price: {{price}}</p>
 
     <!-- <button ion-button (click)="Utils.home(this.navCtrl)">Home</button> -->
 </ion-content>

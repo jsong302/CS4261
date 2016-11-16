@@ -7,12 +7,13 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content text-center>
-    <h1>Congratulations! Your bought a textbook!</h1>
+<ion-content text-center padding-left padding-right>
+    <h3>Congratulations! We have notified seller {{seller.name}} about the textbook <i>{{book.title}}</i>. {{seller.name}} will contact you soon.</h3>
     <p>Book Name: {{book.title}}</p>
     <p>Author: {{book.author}}</p>
-    <p>Seller: {{seller.name}}</p>
-    <p>Total: {{seller.price}}</p>
+    <!-- <p>Edition: {{book.edition}}</p> -->
+    <p>ISBN: {{book.isbn}}</p>
+    <p>Price: {{seller.price}}</p>
 
     <button ion-button (click)="Utils.home(this.navCtrl)">Home</button>
 </ion-content>
