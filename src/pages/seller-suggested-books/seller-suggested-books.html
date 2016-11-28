@@ -14,7 +14,8 @@
             <ion-card-header>{{book.title}}</ion-card-header>
             <ion-card-content>
                 {{book.author}}<br>
-                <!-- {{book.edition}}<br> -->
+                {{book.edition}}<br>
+                {{book.publisher}}<br>
                 {{book.isbn}}
             </ion-card-content>
         </ion-card>
@@ -38,6 +39,10 @@
             <ion-item>
                 <ion-label color="secondary">Edition</ion-label>
                 <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="secondary">Publisher</ion-label>
+                <ion-input type="text" [(ngModel)]="form.publisher" name="publisher" placeholder="Penguin Putnam, Inc." required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="secondary">ISBN</ion-label>

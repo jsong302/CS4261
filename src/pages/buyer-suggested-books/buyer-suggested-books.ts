@@ -8,7 +8,7 @@ import { BookService } from '../../providers/book-service';
   providers: [BookService]
 })
 export class BuyerSuggestedBooks {
-  suggestedBooks: Array<{title: string, author: string, isbn: string}>;
+  suggestedBooks: Array<{title: string, edition: string, author: string, publisher: string, isbn: string}>;
   course: string;
   professor: string;
   public list: any;
@@ -16,6 +16,7 @@ export class BuyerSuggestedBooks {
     title: '',
     edition: '',
     author: '',
+    publisher: '',
     isbn: ''};
 
   constructor(private navCtrl: NavController, private navParams: NavParams, public bookService: BookService) {
@@ -32,7 +33,7 @@ export class BuyerSuggestedBooks {
 
   onSubmit() {
     console.log(this.form);
-    //this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
+    this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
     this.openPage(this.form);
   }
 
@@ -41,7 +42,7 @@ export class BuyerSuggestedBooks {
     .then(data => {
       this.list = data;
       for(let l of this.list) {
-        this.suggestedBooks.push({title: l.title, author: l.author, isbn: l.isbn});
+        this.suggestedBooks.push({title: l.title, author: l.author, publisher: l.publisher, isbn: l.isbn});
       }
     });
     

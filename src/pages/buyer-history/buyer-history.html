@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding-left padding-right>
+    <h3>Requested Books</h3>
+    <ion-card *ngFor="let book of requestedBooks">
+    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>
+    <ion-card-content>
+      Author: {{book.author}}
+      <button id="history_button" ion-button small color="primary" (click)="cancel(book)">Cancel</button>
+      <br>
+      Price: {{book.price}}
+    </ion-card-content>
+    </ion-card>
+
+    <h3 text-left>Bought Books</h3>
+    <ion-card *ngFor="let book of boughtBooks">
+    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>
+    <ion-card-content>
+      Author: {{book.author}}
+      <br>
+      Price: {{book.price}}
+    </ion-card-content>
+    </ion-card>
+</ion-content>

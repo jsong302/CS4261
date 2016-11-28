@@ -7,7 +7,11 @@ import { SellerConfirmation } from '../seller-confirmation/seller-confirmation';
   templateUrl: 'seller-set-price.html'
 })
 export class SellerSetPrice {
-  form: any;
+  form = {
+    condition: '',
+    markings: '',
+    price: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

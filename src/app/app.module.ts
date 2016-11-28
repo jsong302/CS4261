@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { SelectRole } from '../pages/select-role/select-role';
+import { BuyerChooseFunctionality } from '../pages/buyer-choose-functionality/buyer-choose-functionality';
+import { BuyerHistory } from '../pages/buyer-history/buyer-history';
 import { BuyerSelectCourse } from '../pages/buyer-select-course/buyer-select-course';
 import { BuyerSuggestedBooks } from '../pages/buyer-suggested-books/buyer-suggested-books';
 import { BuyerBookList } from '../pages/buyer-book-list/buyer-book-list';
@@ -17,6 +19,8 @@ import { SellerConfirmation } from '../pages/seller-confirmation/seller-confirma
   declarations: [
     MyApp,
     SelectRole,
+    BuyerChooseFunctionality,
+    BuyerHistory,
     BuyerSelectCourse,
     BuyerSuggestedBooks,
     BuyerBookList,
@@ -35,6 +39,8 @@ import { SellerConfirmation } from '../pages/seller-confirmation/seller-confirma
   entryComponents: [
     MyApp,
     SelectRole,
+    BuyerChooseFunctionality,
+    BuyerHistory,
     BuyerSelectCourse,
     BuyerSuggestedBooks,
     BuyerBookList,
