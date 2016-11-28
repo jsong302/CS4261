@@ -9,7 +9,15 @@ import {ListService} from '../../providers/list-service';
   providers: [ListService]
 })
 export class SellerSetPrice {
+<<<<<<< HEAD
   form = {price: ''};
+=======
+  form = {
+    condition: '',
+    markings: '',
+    price: ''
+  };
+>>>>>>> refs/remotes/origin/master
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public listService: ListService) {
   }
