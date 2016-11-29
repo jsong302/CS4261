@@ -9,7 +9,7 @@ import { BookService } from '../../providers/book-service';
   providers: [BookService]
 })
 export class SellerSuggestedBooks {
-  suggestedBooks: Array<{title: string, author: string, publisher: string, isbn: string}>;
+  suggestedBooks: Array<{title: string, author: string, edition: string, publisher: string, isbn: string}>;
   course: string;
   professor: string;
   semester: string;
