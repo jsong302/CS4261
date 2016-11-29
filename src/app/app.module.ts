@@ -8,6 +8,7 @@ import { BuyerSelectCourse } from '../pages/buyer-select-course/buyer-select-cou
 import { BuyerSuggestedBooks } from '../pages/buyer-suggested-books/buyer-suggested-books';
 import { BuyerBookList } from '../pages/buyer-book-list/buyer-book-list';
 import { BuyerConfirmation } from '../pages/buyer-confirmation/buyer-confirmation';
+import { BuyerRequestConfirmation } from '../pages/buyer-request-confirmation/buyer-request-confirmation';
 import { SellerChooseFunctionality } from '../pages/seller-choose-functionality/seller-choose-functionality';
 import { SellerHistory } from '../pages/seller-history/seller-history';
 import { SellerClassInfo } from '../pages/seller-class-info/seller-class-info';
@@ -25,6 +26,7 @@ import { SellerConfirmation } from '../pages/seller-confirmation/seller-confirma
     BuyerSuggestedBooks,
     BuyerBookList,
     BuyerConfirmation,
+    BuyerRequestConfirmation,
     SellerChooseFunctionality,
     SellerHistory,
     SellerClassInfo,
@@ -45,6 +47,7 @@ import { SellerConfirmation } from '../pages/seller-confirmation/seller-confirma
     BuyerSuggestedBooks,
     BuyerBookList,
     BuyerConfirmation,
+    BuyerRequestConfirmation,
     SellerChooseFunctionality,
     SellerHistory,
     SellerClassInfo,

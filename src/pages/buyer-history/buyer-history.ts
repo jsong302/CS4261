@@ -6,9 +6,8 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'buyer-history.html'
 })
 export class BuyerHistory {
-  requestedBooks: Array<{title: string, author: string, seller: string, contact: string, price: number}>;
-  boughtBooks: Array<{title: string, author: string, seller: string, contact: string, price: number}>;
-
+  requestedBooks: Array<{title: string, author: string, price: number}>;
+  boughtBooks: Array<{title: string, author: string, price: number}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // Pull info from database
@@ -33,8 +32,8 @@ export class BuyerHistory {
       price: 55.25},
       {title: 'The Study of Mobile Apps',
       author: 'John Jones, Robert Paulson',
-      seller: 'Alex Kim',
-      contact: 'akim316@gatech.edu',
+      seller: 'Alex Kim'
+      contact: 'akim316@gatech.edu'
       price: 98.75}
     ];
   }
