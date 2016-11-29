@@ -8,7 +8,7 @@ import { BookService } from '../../providers/book-service';
   providers: [BookService]
 })
 export class BuyerSuggestedBooks {
-  suggestedBooks: Array<{title: string, edition: string, author: string, publisher: string, isbn: string}>;
+  suggestedBooks: Array<{title: string, author: string, edition: string, publisher: string, isbn: string}>;
   course: string;
   professor: string;
   public list: any;
@@ -42,7 +42,7 @@ export class BuyerSuggestedBooks {
     .then(data => {
       this.list = data;
       for(let l of this.list) {
-        this.suggestedBooks.push({title: l.title, author: l.author, publisher: l.publisher, isbn: l.isbn});
+        this.suggestedBooks.push({title: l.title, author: l.author, edition: l.edition, publisher: l.publisher, isbn: l.isbn});
       }
     });
     
