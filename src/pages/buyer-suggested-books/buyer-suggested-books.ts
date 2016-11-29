@@ -32,9 +32,9 @@ export class BuyerSuggestedBooks {
   }
 
   onSubmit() {
-    console.log(this.form);
-    this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
-    this.openPage(this.form);
+    this.bookService.add(this.course, this.professor, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
+    this.openPage({title: this.form.title, author: this.form.author, isbn: this.form.isbn});
+
   }
 
   loadList(){

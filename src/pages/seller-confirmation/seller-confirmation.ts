@@ -24,7 +24,7 @@ export class SellerConfirmation {
     this.course = this.navParams.get('course');
     this.instructor = this.navParams.get('instructor');
     this.semester = this.navParams.get('semester');
-
+    
     // Push to database
   }
 }

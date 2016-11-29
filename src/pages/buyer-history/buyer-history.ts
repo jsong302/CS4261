@@ -9,6 +9,7 @@ export class BuyerHistory {
   requestedBooks: Array<{title: string, author: string, seller: string, contact: string, price: number}>;
   boughtBooks: Array<{title: string, author: string, seller: string, contact: string, price: number}>;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // Pull info from database
     this.requestedBooks = [

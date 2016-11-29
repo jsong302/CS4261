@@ -15,12 +15,25 @@ export class BuyerBookList {
   book: {title: string, author: string, edition: string, publisher: string, isbn: string};
   btnText: string;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public listService: ListService, public alertCtrl: AlertController) {
     this.book = navParams.get('book');
     this.sellers = [];
     this.loadList();
   }
 
+  openPage(seller) {
+    this.listService.purchase(seller.id);
+    this.navCtrl.push(BuyerConfirmation, {
+      book: this.book,
+      seller: seller});
+    
+  }
+
+  onSubmit() {
+    this.listService.request(this.form.price, this.book.isbn);
+    this.navCtrl.push(BuyerRequestConfirmation, {});
+  }
   request(seller) {
     if (seller.btnText !== 'Requested') {
       seller.btnText = 'Requested'
@@ -40,6 +53,7 @@ export class BuyerBookList {
       this.list = data;
       for(let l of this.list) {
         this.sellers.push({name: l.seller, price: l.cost, btnText: 'Request'});
+
       }
     });
     console.log(this.sellers);
