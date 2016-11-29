@@ -13,6 +13,15 @@
     <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>
     <ion-card-content>
       Author: {{book.author}}
+      <button id="history_button" ion-button small color="primary" (click)="remove(book)">
+        Remove Post
+      </button>
+      <button id="history_button" ion-button small color="primary">
+        Exchange Complete
+        <ion-select [(ngModel)]="soldTo" (ionChange)="sold(book,soldTo)">
+          <ion-option ion-button *ngFor="let name of requests" [value]="name">{{name}}</ion-option>
+        </ion-select>
+      </button>
       <br>
       Price: {{book.price}}
     </ion-card-content>
@@ -23,6 +32,8 @@
     <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>
     <ion-card-content>
       Author: {{book.author}}
+      <br>
+      Buyer: {{book.buyer}}
       <br>
       Price: {{book.price}}
     </ion-card-content>

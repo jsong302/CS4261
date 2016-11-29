@@ -81173,54 +81173,6 @@ var ListService = (function () {
             });
         });
     };
-    ListService.prototype.purchase = function (id) {
-        var _this = this;
-        return new Promise(function (resolve) {
-            // We're using Angular HTTP provider to request the data,
-            // then on the response, it'll map the JSON data to a parsed JS object.
-            // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/buyerpurchase/buyer/akim316/listingid/' + id)
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                // we've got back the raw data, now generate the core schedule data
-                // and save the data for later reference
-                _this.data = data;
-                resolve(_this.data);
-            });
-        });
-    };
-    ListService.prototype.request = function (cost, isbn) {
-        var _this = this;
-        return new Promise(function (resolve) {
-            // We're using Angular HTTP provider to request the data,
-            // then on the response, it'll map the JSON data to a parsed JS object.
-            // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/buyerrequest/buyer/akim316?cost=' + cost + '&isbn=' + isbn)
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                // we've got back the raw data, now generate the core schedule data
-                // and save the data for later reference
-                _this.data = data;
-                resolve(_this.data);
-            });
-        });
-    };
-    ListService.prototype.sell = function (cost, isbn) {
-        var _this = this;
-        return new Promise(function (resolve) {
-            // We're using Angular HTTP provider to request the data,
-            // then on the response, it'll map the JSON data to a parsed JS object.
-            // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/sellerpost/seller/akim316?cost=' + cost + '&isbn=' + isbn)
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                // we've got back the raw data, now generate the core schedule data
-                // and save the data for later reference
-                _this.data = data;
-                resolve(_this.data);
-            });
-        });
-    };
     ListService = __decorate$113([
         Injectable(), 
         __metadata$7('design:paramtypes', [Http])
@@ -81251,15 +81203,12 @@ var BuyerBookList = (function () {
         if (seller.btnText !== 'Requested') {
             seller.btnText = 'Requested';
             var alert_1 = this.alertCtrl.create({
-                title: 'We have notified seller ' + seller.name + '!',
-                subTitle: 'Book Name: ' + this.book.title
-                    + '<br>Author: ' + this.book.author
-                    + '<br>ISBN: ' + this.book.isbn
-                    + '<br>Price: ' + seller.price,
+                title: 'We have notified seller ' + seller.name + '! ' + seller.name + ' will contact you soon.',
                 buttons: ['OK']
             });
             alert_1.present();
         }
+        // Send email to seller
         // Update database
     };
     BuyerBookList.prototype.loadList = function () {
@@ -81305,11 +81254,11 @@ var BookService = (function () {
         console.log('Hello BookService Provider');
     }
     BookService.prototype.load = function (course, professor) {
-        /*if (this.data) {
-          // already loaded data
-          return Promise.resolve(this.data);
-        }*/
         var _this = this;
+        if (this.data) {
+            // already loaded data
+            return Promise.resolve(this.data);
+        }
         // don't have the data yet
         return new Promise(function (resolve) {
             // We're using Angular HTTP provider to request the data,
@@ -81325,21 +81274,8 @@ var BookService = (function () {
             });
         });
     };
-    BookService.prototype.add = function (course, professor, isbn, name, author, publisher, edition) {
-        var _this = this;
-        return new Promise(function (resolve) {
-            // We're using Angular HTTP provider to request the data,
-            // then on the response, it'll map the JSON data to a parsed JS object.
-            // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/addtextbook/course/' + course + '/professor/' + professor + '?isbn=' + isbn + '&name=' + name + '&author[0]=' + author + '&edition=' + edition + '&publisher=' + publisher)
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                // we've got back the raw data, now generate the core schedule data
-                // and save the data for later reference
-                _this.data = data;
-                resolve(_this.data);
-            });
-        });
+    BookService.prototype.add = function (course, isbn, name, author, publisher, edition) {
+        //this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author=' + author + '&edition=' + edition + '&publisher=' + publisher);
     };
     BookService = __decorate$114([
         Injectable(), 
@@ -81366,6 +81302,7 @@ var BuyerSuggestedBooks = (function () {
             title: '',
             edition: '',
             author: '',
+            publisher: '',
             isbn: '' };
         this.list = null;
         this.suggestedBooks = [];
@@ -81378,7 +81315,7 @@ var BuyerSuggestedBooks = (function () {
     };
     BuyerSuggestedBooks.prototype.onSubmit = function () {
         console.log(this.form);
-        this.bookService.add(this.course, this.professor, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
+        this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
         this.openPage(this.form);
     };
     BuyerSuggestedBooks.prototype.loadList = function () {
@@ -81388,7 +81325,7 @@ var BuyerSuggestedBooks = (function () {
             _this.list = data;
             for (var _i = 0, _a = _this.list; _i < _a.length; _i++) {
                 var l = _a[_i];
-                _this.suggestedBooks.push({ title: l.title, author: l.author, isbn: l.isbn });
+                _this.suggestedBooks.push({ title: l.title, author: l.author, edition: l.edition, publisher: l.publisher, isbn: l.isbn });
             }
         });
     };
@@ -81433,7 +81370,7 @@ var CourseService = (function () {
             // We're using Angular HTTP provider to request the data,
             // then on the response, it'll map the JSON data to a parsed JS object.
             // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/schedule/gtid/akim316')
+            _this.http.get('https://texchange-backend.herokuapp.com/schedule/gtid/s')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 // we've got back the raw data, now generate the core schedule data
@@ -81502,17 +81439,25 @@ var BuyerHistory = (function () {
         this.requestedBooks = [
             { title: 'Mobile Services Textbook',
                 author: 'John Smith, Steve Jones',
+                seller: 'Josh Song',
+                contact: 'jsong302@gatech.edu',
                 price: 100.50 },
             { title: 'Guide to the BMC',
                 author: 'John Jacboson',
+                seller: 'Yvonne Shi',
+                contact: 'jshi74@gatech.edu',
                 price: 200.75 }
         ];
         this.boughtBooks = [
             { title: 'Information in the New Age',
                 author: 'John Jones, Joseph Park',
+                seller: 'Kelly in',
+                contact: 'kin3@gatech.edu',
                 price: 55.25 },
             { title: 'The Study of Mobile Apps',
                 author: 'John Jones, Robert Paulson',
+                seller: 'Alex Kim',
+                contact: 'akim316@gatech.edu',
                 price: 98.75 }
         ];
     }
@@ -81577,6 +81522,7 @@ var SellerConfirmation = (function () {
         this.course = this.navParams.get('course');
         this.instructor = this.navParams.get('instructor');
         this.semester = this.navParams.get('semester');
+        // Push to database
     }
     SellerConfirmation = __decorate$121([
         Component({template:/*ion-inline-start:"/Users/jinyushi/Documents/GTCourses/Fall 2016/CS 4261/CS4261/CS4261/src/pages/seller-confirmation/seller-confirmation.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Confirmation</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content text-center padding-left padding-right>\n    <h3>Congratulations! Your textbook information is posted!</h3>\n    <p>Course Name: {{course}}</p>\n    <p>Instructor: {{instructor}}</p>\n    <p>Semester: {{semester}}</p>\n    <p>Book Name: {{book.title}}</p>\n    <p>Author: {{book.author}}</p>\n    <p>Edition: {{book.edition}}</p>\n    <p>Publisher: {{book.publisher}}</p>\n    <p>ISBN: {{book.isbn}}</p>\n    <p>Condition: {{condition}}</p>\n    <p>Amount of Writing: {{markings}}</p>\n    <p>Price: ${{price}}</p>\n\n    <!-- <button ion-button (click)="Utils.home(this.navCtrl)">Home</button> -->\n</ion-content>\n'/*ion-inline-end:"/Users/jinyushi/Documents/GTCourses/Fall 2016/CS 4261/CS4261/CS4261/src/pages/seller-confirmation/seller-confirmation.html"*/
@@ -81639,6 +81585,7 @@ var SellerSuggestedBooks = (function () {
             title: '',
             author: '',
             edition: '',
+            publisher: '',
             isbn: '' };
         this.list = null;
         this.suggestedBooks = [];
@@ -81655,7 +81602,7 @@ var SellerSuggestedBooks = (function () {
             _this.list = data;
             for (var _i = 0, _a = _this.list; _i < _a.length; _i++) {
                 var l = _a[_i];
-                _this.suggestedBooks.push({ title: l.title, author: l.author, isbn: l.isbn });
+                _this.suggestedBooks.push({ title: l.title, author: l.author, edition: l.edition, publisher: l.publisher, isbn: l.isbn });
             }
         });
     };

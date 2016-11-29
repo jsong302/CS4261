@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SellerConfirmation } from '../seller-confirmation/seller-confirmation';
-import {ListService} from '../../providers/list-service';
 
 
 @Component({
-  templateUrl: 'seller-set-price.html',
-  providers: [ListService]
+  templateUrl: 'seller-set-price.html'
 })
 export class SellerSetPrice {
-  form = {price: ''};
+  form = {
+    condition: '',
+    markings: '',
+    price: ''
+  };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listService: ListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   onSubmit() {
-    this.listService.sell(this.form.price, this.navParams.get('book').isbn);
     this.navCtrl.push(SellerConfirmation, {
       book: this.navParams.get('book'),
       course: this.navParams.get('course'),

@@ -14,7 +14,8 @@
             <ion-card-header>{{book.title}}</ion-card-header>
             <ion-card-content>
                 {{book.author}}<br>
-                <!-- {{book.edition}}<br> -->
+                {{book.edition}}<br>
+                {{book.publisher}}<br>
                 {{book.isbn}}
             </ion-card-content>
         </ion-card>
@@ -29,15 +30,19 @@
         <form (ngSubmit)="onSubmit()">
             <ion-item>
                 <ion-label color="secondary">Textbook Name</ion-label>
-                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps" required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="secondary">Author</ion-label>
-                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"> </ion-input>
+                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason" required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="secondary">Edition</ion-label>
-                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>
+                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="secondary">Publisher</ion-label>
+                <ion-input type="text" [(ngModel)]="form.publisher" name="publisher" placeholder="Penguin Putnam, Inc." required></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="secondary">ISBN</ion-label>

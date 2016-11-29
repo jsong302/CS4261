@@ -9,7 +9,7 @@ import { BookService } from '../../providers/book-service';
   providers: [BookService]
 })
 export class SellerSuggestedBooks {
-  suggestedBooks: Array<{title: string, author: string, publisher: string, isbn: string}>;
+  suggestedBooks: Array<{title: string, author: string, edition: string, publisher: string, isbn: string}>;
   course: string;
   professor: string;
   semester: string;
@@ -18,6 +18,7 @@ export class SellerSuggestedBooks {
     title: '',
     author: '',
     edition: '',
+    publisher: '',
     isbn: ''};
 
   constructor(private navCtrl: NavController, private navParams: NavParams, public bookService: BookService) {
@@ -36,7 +37,7 @@ export class SellerSuggestedBooks {
     .then(data => {
       this.list = data;
       for(let l of this.list) {
-        this.suggestedBooks.push({title: l.title, author: l.author, isbn: l.isbn});
+        this.suggestedBooks.push({title: l.title, author: l.author, edition: l.edition, publisher: l.publisher, isbn: l.isbn});
       }
     });
   }
