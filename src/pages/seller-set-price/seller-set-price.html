@@ -3,32 +3,13 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Set Price and Condition</ion-title>
+        <ion-title>Set Price</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content text-center padding-left padding-right>
     <ion-list>
         <form (ngSubmit)="onSubmit()">    
-            <ion-item>
-                <ion-label color="secondary">Physical condition</ion-label>
-                <ion-select [(ngModel)]="form.condition" name="condition" required="true">
-                    <ion-option value="New">New</ion-option>
-                    <ion-option value="Like new">Like new</ion-option>
-                    <ion-option value="Used">Used</ion-option>
-                    <ion-option value="Poor">Poor</ion-option>
-                </ion-select><br>
-            </ion-item>
-
-            <ion-item>
-                <ion-label color="secondary">Are there any markings or writings in the book?</ion-label>
-                <ion-select [(ngModel)]="form.markings" name="markings" required="true">
-                    <ion-option value="None">None</ion-option>
-                    <ion-option value="Very few">Very few</ion-option>
-                    <ion-option value="Many">Many</ion-option>
-                </ion-select><br>
-            </ion-item>
-
             <ion-item>
                 <ion-label color="secondary">I'm selling the book for</ion-label>
                 <ion-input type="number" [(ngModel)]="form.price" name="price" placeholder="$0.00" required></ion-input>

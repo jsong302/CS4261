@@ -8,7 +8,7 @@ import { BookService } from '../../providers/book-service';
   providers: [BookService]
 })
 export class BuyerSuggestedBooks {
-  suggestedBooks: Array<{title: string, author: string, edition: string, publisher: string, isbn: string}>;
+  suggestedBooks: Array<{title: string, edition: string, author: string, publisher: string, isbn: string}>;
   course: string;
   professor: string;
   public list: any;
@@ -24,7 +24,11 @@ export class BuyerSuggestedBooks {
     this.suggestedBooks = [];
     this.course = navParams.get('course');
     this.professor = navParams.get('professor');
-    this.loadList();
+    // this.loadList();
+  }
+
+  ionViewWillEnter() {
+      this.loadList();
   }
 
   openPage(suggestedBook) {
@@ -32,17 +36,17 @@ export class BuyerSuggestedBooks {
   }
 
   onSubmit() {
-    console.log(this.form);
     this.bookService.add(this.course, this.professor, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
-    this.openPage(this.form);
+    this.openPage({title: this.form.title, author: this.form.author, isbn: this.form.isbn});
   }
 
   loadList(){
+    this.suggestedBooks = [];
     this.bookService.load(this.course, this.professor)
     .then(data => {
       this.list = data;
       for(let l of this.list) {
-        this.suggestedBooks.push({title: l.title, author: l.author, edition: l.edition, publisher: l.publisher, isbn: l.isbn});
+        this.suggestedBooks.push({title: l.title, author: l.author, publisher: l.publisher, isbn: l.isbn});
       }
     });
     
