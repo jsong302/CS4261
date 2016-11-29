@@ -81173,6 +81173,54 @@ var ListService = (function () {
             });
         });
     };
+    ListService.prototype.purchase = function (id) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // We're using Angular HTTP provider to request the data,
+            // then on the response, it'll map the JSON data to a parsed JS object.
+            // Next, we process the data and resolve the promise with the new data.
+            _this.http.get('https://texchange-backend.herokuapp.com/buyerpurchase/buyer/akim316/listingid/' + id)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                // we've got back the raw data, now generate the core schedule data
+                // and save the data for later reference
+                _this.data = data;
+                resolve(_this.data);
+            });
+        });
+    };
+    ListService.prototype.request = function (cost, isbn) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // We're using Angular HTTP provider to request the data,
+            // then on the response, it'll map the JSON data to a parsed JS object.
+            // Next, we process the data and resolve the promise with the new data.
+            _this.http.get('https://texchange-backend.herokuapp.com/buyerrequest/buyer/akim316?cost=' + cost + '&isbn=' + isbn)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                // we've got back the raw data, now generate the core schedule data
+                // and save the data for later reference
+                _this.data = data;
+                resolve(_this.data);
+            });
+        });
+    };
+    ListService.prototype.sell = function (cost, isbn) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // We're using Angular HTTP provider to request the data,
+            // then on the response, it'll map the JSON data to a parsed JS object.
+            // Next, we process the data and resolve the promise with the new data.
+            _this.http.get('https://texchange-backend.herokuapp.com/sellerpost/seller/akim316?cost=' + cost + '&isbn=' + isbn)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                // we've got back the raw data, now generate the core schedule data
+                // and save the data for later reference
+                _this.data = data;
+                resolve(_this.data);
+            });
+        });
+    };
     ListService = __decorate$113([
         Injectable(), 
         __metadata$7('design:paramtypes', [Http])
@@ -81254,11 +81302,11 @@ var BookService = (function () {
         console.log('Hello BookService Provider');
     }
     BookService.prototype.load = function (course, professor) {
+        /*if (this.data) {
+          // already loaded data
+          return Promise.resolve(this.data);
+        }*/
         var _this = this;
-        if (this.data) {
-            // already loaded data
-            return Promise.resolve(this.data);
-        }
         // don't have the data yet
         return new Promise(function (resolve) {
             // We're using Angular HTTP provider to request the data,
@@ -81274,8 +81322,21 @@ var BookService = (function () {
             });
         });
     };
-    BookService.prototype.add = function (course, isbn, name, author, publisher, edition) {
-        //this.http.post('/addtextbook/course/' + course + '?isbn=' + isbn + '&name=' + name + '&author=' + author + '&edition=' + edition + '&publisher=' + publisher);
+    BookService.prototype.add = function (course, professor, isbn, name, author, publisher, edition) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // We're using Angular HTTP provider to request the data,
+            // then on the response, it'll map the JSON data to a parsed JS object.
+            // Next, we process the data and resolve the promise with the new data.
+            _this.http.get('https://texchange-backend.herokuapp.com/addtextbook/course/' + course + '/professor/' + professor + '?isbn=' + isbn + '&name=' + name + '&author[0]=' + author + '&edition=' + edition + '&publisher=' + publisher)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                // we've got back the raw data, now generate the core schedule data
+                // and save the data for later reference
+                _this.data = data;
+                resolve(_this.data);
+            });
+        });
     };
     BookService = __decorate$114([
         Injectable(), 
@@ -81315,7 +81376,7 @@ var BuyerSuggestedBooks = (function () {
     };
     BuyerSuggestedBooks.prototype.onSubmit = function () {
         console.log(this.form);
-        this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
+        this.bookService.add(this.course, this.professor, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
         this.openPage(this.form);
     };
     BuyerSuggestedBooks.prototype.loadList = function () {
@@ -81370,7 +81431,7 @@ var CourseService = (function () {
             // We're using Angular HTTP provider to request the data,
             // then on the response, it'll map the JSON data to a parsed JS object.
             // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/schedule/gtid/s')
+            _this.http.get('https://texchange-backend.herokuapp.com/schedule/gtid/akim316')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 // we've got back the raw data, now generate the core schedule data
