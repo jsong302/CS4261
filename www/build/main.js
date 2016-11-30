@@ -81253,18 +81253,21 @@ var ListService = (function () {
             });
         });
     };
-    ListService.prototype.sell = function (cost, isbn) {
+    ListService.prototype.sell = function (cost, isbn, condition, writing) {
         var _this = this;
+        console.log("hi");
+        console.log(isbn);
         return new Promise(function (resolve) {
             // We're using Angular HTTP provider to request the data,
             // then on the response, it'll map the JSON data to a parsed JS object.
             // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://texchange-backend.herokuapp.com/sellerpost/seller/akim316?cost=' + cost + '&isbn=' + isbn)
+            _this.http.get('https://texchange-backend.herokuapp.com/sellerpost/seller/akim316?cost=' + cost + '&isbn=' + isbn + '&condition=' + condition + '&writing=' + writing)
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 // we've got back the raw data, now generate the core schedule data
                 // and save the data for later reference
                 _this.data = data;
+                console.log(_this.data);
                 resolve(_this.data);
             });
         });
@@ -81427,7 +81430,7 @@ var BuyerBookList = (function () {
         this.navCtrl.popToRoot();
     };
     BuyerBookList = __decorate$112([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Book List</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center padding-left padding-right>\n\n  <div *ngIf="sellers.length > 0">\n\n    <h3>Listings for {{book.title}}</h3>\n\n    <ion-list>\n\n        <ion-item *ngFor="let seller of sellers">\n\n            <p>Author: {{book.author}}</p>\n\n            <p>Edition: {{book.edition}}</p>\n\n            <p>Publisher: {{book.publisher}}</p>\n\n            <p>ISBN: {{book.isbn}}</p><br>\n\n            <p>Seller: {{seller.name}}</p>\n\n            <p>Condition: {{seller.condition}}</p>\n\n            <p>Amount of Writing: {{seller.markings}}</p>\n\n            <p>Price: {{seller.price}}</p>\n\n            <button ion-button color="primary" (click)="request(seller)" ngDisabled="seller.btnText === \'Requested\'">{{seller.btnText}}</button>\n\n        </ion-item>\n\n    </ion-list>\n\n  </div>\n\n  <div *ngIf="sellers.length == 0">\n\n    <h3>Sorry! We don\'t have any listing for {{book.title}} right now. Come back later!</h3>\n\n  </div>\n\n  <ion-list>\n\n        <form (ngSubmit)="onSubmit()">\n\n            <ion-item>\n\n                <ion-label color="secondary">Price</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.price" name="price" placeholder="$0.00" required></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Request</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/,
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Book List</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content text-center padding-left padding-right>\n\n  <div *ngIf="sellers.length > 0">\n\n    <h3>Listings for {{book.title}}</h3>\n\n    <ion-list>\n\n        <ion-item *ngFor="let seller of sellers">\n\n            <p>Author: {{book.author}}</p>\n\n            <p>Edition: {{book.edition}}</p>\n\n            <p>Publisher: {{book.publisher}}</p>\n\n            <p>ISBN: {{book.isbn}}</p><br>\n\n            <p>Seller: {{seller.name}}</p>\n\n            <p>Condition: {{seller.condition}}</p>\n\n            <p>Amount of Writing: {{seller.markings}}</p>\n\n            <p>Price: {{seller.price}}</p>\n\n            <button ion-button color="primary" (click)="request(seller)" ngDisabled="seller.btnText === \'Requested\'">{{seller.btnText}}</button>\n\n        </ion-item>\n\n    </ion-list>\n\n  </div>\n\n  <div *ngIf="sellers.length == 0">\n\n    <h3>Sorry! We don\'t have any listing for {{book.title}} right now. Come back later!</h3>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-book-list\buyer-book-list.html"*/,
             providers: [ListService]
         }), 
         __metadata$6('design:paramtypes', [NavController, NavParams, ListService, AlertController])
@@ -81723,7 +81726,6 @@ var __decorate$123 = (undefined && undefined.__decorate) || function (decorators
 var __metadata$17 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// import { Utils } from '../utils/utils';
 var SellerConfirmation = (function () {
     function SellerConfirmation(navCtrl, navParams) {
         this.navCtrl = navCtrl;
@@ -81770,7 +81772,7 @@ var SellerSetPrice = (function () {
         };
     }
     SellerSetPrice.prototype.onSubmit = function () {
-        this.listService.sell(this.form.price, this.navParams.get('book').isbn);
+        this.listService.sell(this.form.price, this.navParams.get('book').isbn, this.form.condition, this.form.markings);
         this.navCtrl.push(SellerConfirmation, {
             book: this.navParams.get('book'),
             course: this.navParams.get('course'),
@@ -81827,6 +81829,7 @@ var SellerSuggestedBooks = (function () {
         });
     };
     SellerSuggestedBooks.prototype.openPage = function (suggestedBook) {
+        this.bookService.add(this.course, this.professor, suggestedBook.isbn, suggestedBook.title, suggestedBook.author, suggestedBook.publisher, suggestedBook.edition);
         this.navCtrl.push(SellerSetPrice, {
             book: suggestedBook,
             course: this.course,

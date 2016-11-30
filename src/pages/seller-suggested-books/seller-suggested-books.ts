@@ -43,6 +43,7 @@ export class SellerSuggestedBooks {
   }
 
   openPage(suggestedBook) {
+    this.bookService.add(this.course, this.professor, suggestedBook.isbn, suggestedBook.title, suggestedBook.author, suggestedBook.publisher, suggestedBook.edition);
     this.navCtrl.push(SellerSetPrice, {
       book: suggestedBook,
       course: this.course,

@@ -19,7 +19,7 @@ export class SellerSetPrice {
   }
 
   onSubmit() {
-    this.listService.sell(this.form.price, this.navParams.get('book').isbn);
+    this.listService.sell(this.form.price, this.navParams.get('book').isbn, this.form.condition, this.form.markings);
     this.navCtrl.push(SellerConfirmation, {
       book: this.navParams.get('book'),
       course: this.navParams.get('course'),

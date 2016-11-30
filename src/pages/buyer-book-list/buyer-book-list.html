@@ -27,13 +27,4 @@
   <div *ngIf="sellers.length == 0">
     <h3>Sorry! We don't have any listing for {{book.title}} right now. Come back later!</h3>
   </div>
-  <ion-list>
-        <form (ngSubmit)="onSubmit()">
-            <ion-item>
-                <ion-label color="secondary">Price</ion-label>
-                <ion-input type="number" [(ngModel)]="form.price" name="price" placeholder="$0.00" required></ion-input>
-            </ion-item>
-            <button ion-button type="submit" color="primary">Request</button>
-        </form>
-    </ion-list>
 </ion-content>
