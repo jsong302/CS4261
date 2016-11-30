@@ -19,7 +19,7 @@
       <button id="history_button" ion-button small color="primary">
         Exchange Complete
         <ion-select [(ngModel)]="soldTo" (ionChange)="sold(book,soldTo)">
-          <ion-option ion-button *ngFor="let name of requests" [value]="name">{{name}}</ion-option>
+          <ion-option ion-button *ngFor="let name of book.requests" [value]="name">{{name}}</ion-option>
         </ion-select>
       </button>
       <br>

@@ -131,6 +131,24 @@ export class ListService {
 	  });
 	}
 
+	soldConfirm(list_id: number, buyer_id: string) {
+		console.log(list_id);
+		console.log(buyer_id);
+		return new Promise(resolve => {
+	    // We're using Angular HTTP provider to request the data,
+	    // then on the response, it'll map the JSON data to a parsed JS object.
+	    // Next, we process the data and resolve the promise with the new data.
+	    this.http.get('https://texchange-backend.herokuapp.com/confirmpurchase/listing/' + list_id + '/buyer/' + buyer_id)
+	      .map(res => res.json())
+	      .subscribe(data => {
+	        // we've got back the raw data, now generate the core schedule data
+	        // and save the data for later reference
+	        this.data = data;
+	        resolve(this.data);
+	      });
+	  });
+	}
+
 	cancelSeller(id: number) {
 		return new Promise(resolve => {
 	    // We're using Angular HTTP provider to request the data,

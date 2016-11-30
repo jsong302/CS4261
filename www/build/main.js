@@ -81317,6 +81317,24 @@ var ListService = (function () {
             });
         });
     };
+    ListService.prototype.soldConfirm = function (list_id, buyer_id) {
+        var _this = this;
+        console.log(list_id);
+        console.log(buyer_id);
+        return new Promise(function (resolve) {
+            // We're using Angular HTTP provider to request the data,
+            // then on the response, it'll map the JSON data to a parsed JS object.
+            // Next, we process the data and resolve the promise with the new data.
+            _this.http.get('https://texchange-backend.herokuapp.com/confirmpurchase/listing/' + list_id + '/buyer/' + buyer_id)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                // we've got back the raw data, now generate the core schedule data
+                // and save the data for later reference
+                _this.data = data;
+                resolve(_this.data);
+            });
+        });
+    };
     ListService.prototype.cancelSeller = function (id) {
         var _this = this;
         return new Promise(function (resolve) {
@@ -81531,7 +81549,7 @@ var BuyerSuggestedBooks = (function () {
         });
     };
     BuyerSuggestedBooks = __decorate$111([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Suggested Textbooks</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding-left padding-right>\n\n    <div *ngIf="suggestedBooks.length > 0">\n\n        <h3>We found these textbooks for {{course}}</h3>\n\n        <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">\n\n            <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n\n            <ion-card-content>\n\n                {{book.author}}<br>\n\n                {{book.edition}}<br>\n\n                {{book.publisher}}<br>\n\n                {{book.isbn}}\n\n            </ion-card-content>\n\n        </ion-card>\n\n    </div>\n\n    <div *ngIf="suggestedBooks.length == 0">\n\n        <h3>Uh-oh! We didn\'t find any textbooks associated with {{course}}.</h3>\n\n    </div>\n\n\n\n    <br>\n\n    <p> Not found? Input information below.</p>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">\n\n            <ion-item>\n\n                <ion-label color="secondary">Textbook Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps" required></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">Author</ion-label>\n\n<<<<<<< HEAD\n\n                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="" required></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">Publisher</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.publisher" name="publisher" placeholder="" required></ion-input>\n\n=======\n\n                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>\n\n>>>>>>> refs/remotes/origin/master\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">Edition</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">Publisher</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.publisher" name="publisher" placeholder="Penguin Putnam, Inc."></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">ISBN</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/,
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Suggested Textbooks</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding-left padding-right>\n\n    <div *ngIf="suggestedBooks.length > 0">\n\n        <h3>We found these textbooks for {{course}}</h3>\n\n        <ion-card *ngFor="let book of suggestedBooks" (click)="openPage(book)">\n\n            <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n\n            <ion-card-content>\n\n                {{book.author}}<br>\n\n                {{book.edition}}<br>\n\n                {{book.publisher}}<br>\n\n                {{book.isbn}}\n\n            </ion-card-content>\n\n        </ion-card>\n\n    </div>\n\n    <div *ngIf="suggestedBooks.length == 0">\n\n        <h3>Uh-oh! We didn\'t find any textbooks associated with {{course}}.</h3>\n\n    </div>\n\n\n\n    <br>\n\n    <p> Not found? Input information below.</p>\n\n    <ion-list>\n\n        <form (ngSubmit)="onSubmit()">\n\n            <ion-item>\n\n                <ion-label color="secondary">Textbook Name</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.title" name="title" placeholder="The Study of Mobile Apps" required></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">Author</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.author" name="author" placeholder="William Eason"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">Edition</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.edition" name="edition" placeholder="3rd"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">Publisher</ion-label>\n\n                <ion-input type="text" [(ngModel)]="form.publisher" name="publisher" placeholder="Penguin Putnam, Inc."></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="secondary">ISBN</ion-label>\n\n                <ion-input type="number" [(ngModel)]="form.isbn" name="isbn" placeholder=""></ion-input>\n\n            </ion-item>\n\n            <button ion-button type="submit" color="primary">Next</button>\n\n        </form>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\buyer-suggested-books\buyer-suggested-books.html"*/,
             providers: [BookService]
         }), 
         __metadata$5('design:paramtypes', [NavController, NavParams, BookService])
@@ -81875,41 +81893,18 @@ var SellerHistory = (function () {
         this.pendingBooks = [];
         this.loadSellerHistory();
         // Pull from database
-        /* this.soldBooks = [
-          {title: 'Mobile Services Textbook',
-          author: 'John Smith, Steve Jones',
-          buyer: 'Yvonne Shi',
-          price: 100.50},
-          {title: 'Guide to the BMC',
-          author: 'John Jacboson',
-          buyer: 'Josh Song',
-          price: 200.75}
-        ];
-    
-        this.pendingBooks = [
-          {title: 'Information in the New Age',
-          author: 'John Jones, Joseph Park',
-          price: 55.25},
-          {title: 'The Study of Mobile Apps',
-          author: 'John Jones, Robert Paulson',
-          price: 98.75}
-        ];
-    
-        this.requests = [
-          'Josh Song',
-          'Kelly In',
-          'Alex Kim',
-          'Yvonne Shi'
-        ] */
     }
     SellerHistory.prototype.remove = function (book) {
         this.pendingBooks.splice(this.pendingBooks.indexOf(book), 1);
         this.listService.cancelSeller(book.id);
     };
     SellerHistory.prototype.sold = function (book, name) {
-        this.pendingBooks.splice(this.pendingBooks.indexOf(book), 1);
-        book['buyer'] = name;
-        this.soldBooks.push(book);
+        if (typeof name == "string") {
+            this.pendingBooks.splice(this.pendingBooks.indexOf(book), 1);
+            book['buyer'] = name;
+            this.soldBooks.push(book);
+            this.listService.soldConfirm(book.id, name);
+        }
         // Update database
     };
     SellerHistory.prototype.loadSellerHistory = function () {
@@ -81919,17 +81914,23 @@ var SellerHistory = (function () {
             _this.list = data;
             for (var _i = 0, _a = _this.list['pending']; _i < _a.length; _i++) {
                 var l = _a[_i];
-                console.log(l);
-                _this.pendingBooks.push({ title: l.title, author: l.author, seller: l.seller, price: l.cost, id: l.listing_id });
+                var r = [];
+                if (l['buyer'] != null) {
+                    for (var _b = 0, _c = l['buyer']; _b < _c.length; _b++) {
+                        var x = _c[_b];
+                        r.push(x);
+                    }
+                }
+                _this.pendingBooks.push({ title: l.title, author: l.author, seller: l.seller, price: l.cost, id: l.listing_id, requests: r });
             }
-            for (var _b = 0, _c = _this.list['sold']; _b < _c.length; _b++) {
-                var m = _c[_b];
-                _this.soldBooks.push({ title: m.title, author: m.author, seller: m.seller, price: m.cost, id: m.listing_id });
+            for (var _d = 0, _e = _this.list['sold']; _d < _e.length; _d++) {
+                var m = _e[_d];
+                _this.soldBooks.push({ title: m.title, buyer: m.buyer, author: m.author, seller: m.seller, price: m.cost, id: m.listing_id });
             }
         });
     };
     SellerHistory = __decorate$124([
-        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-history\seller-history.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>History</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-left padding-right>\n    <h3>Pending Books</h3>\n    <ion-card *ngFor="let book of pendingBooks">\n    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n    <ion-card-content>\n      Author: {{book.author}}\n      <button id="history_button" ion-button small color="primary" (click)="remove(book)">\n        Remove Post\n      </button>\n      <button id="history_button" ion-button small color="primary">\n        Exchange Complete\n        <ion-select [(ngModel)]="soldTo" (ionChange)="sold(book,soldTo)">\n          <ion-option ion-button *ngFor="let name of requests" [value]="name">{{name}}</ion-option>\n        </ion-select>\n      </button>\n      <br>\n      Price: {{book.price}}\n    </ion-card-content>\n    </ion-card>\n\n    <h3 text-left>Sold Books</h3>\n    <ion-card *ngFor="let book of soldBooks">\n    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n    <ion-card-content>\n      Author: {{book.author}}\n      <br>\n      Buyer: {{book.buyer}}\n      <br>\n      Price: {{book.price}}\n    </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-history\seller-history.html"*/,
+        Component({template:/*ion-inline-start:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-history\seller-history.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>History</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-left padding-right>\n    <h3>Pending Books</h3>\n    <ion-card *ngFor="let book of pendingBooks">\n    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n    <ion-card-content>\n      Author: {{book.author}}\n      <button id="history_button" ion-button small color="primary" (click)="remove(book)">\n        Remove Post\n      </button>\n      <button id="history_button" ion-button small color="primary">\n        Exchange Complete\n        <ion-select [(ngModel)]="soldTo" (ionChange)="sold(book,soldTo)">\n          <ion-option ion-button *ngFor="let name of book.requests" [value]="name">{{name}}</ion-option>\n        </ion-select>\n      </button>\n      <br>\n      Price: {{book.price}}\n    </ion-card-content>\n    </ion-card>\n\n    <h3 text-left>Sold Books</h3>\n    <ion-card *ngFor="let book of soldBooks">\n    <ion-card-header color="#4a5350">{{book.title}}</ion-card-header>\n    <ion-card-content>\n      Author: {{book.author}}\n      <br>\n      Buyer: {{book.buyer}}\n      <br>\n      Price: {{book.price}}\n    </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\admin\Documents\School Work\CS 4261\CS4261\src\pages\seller-history\seller-history.html"*/,
             providers: [ListService]
         }), 
         __metadata$18('design:paramtypes', [NavController, NavParams, ListService])
