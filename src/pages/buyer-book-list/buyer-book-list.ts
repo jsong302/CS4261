@@ -11,18 +11,20 @@ import {ListService} from '../../providers/list-service';
   providers: [ListService]
 })
 export class BuyerBookList {
-<<<<<<< HEAD
-  sellers: Array<{name: string, price: number, id: number}>
-  public list: any;
-  book: {title: string, author: string, isbn: string};
-  isbn: string;
-  form = {price: ''};
-=======
-  sellers: Array<{name: string, price: number, btnText: string}>
+  sellers: Array<{name: string, price: number, btnText: string, listing_id: number}>
   public list: any;
   book: {title: string, author: string, edition: string, publisher: string, isbn: string};
+  form = {
+    author: '',
+    edition: '',
+    publisher: '',
+    isbn: '',
+    seller: '',
+    condition: '',
+    markings: '',
+    price: ''
+    };
   btnText: string;
->>>>>>> refs/remotes/origin/master
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public listService: ListService, public alertCtrl: AlertController) {
     this.book = navParams.get('book');
@@ -30,7 +32,6 @@ export class BuyerBookList {
     this.loadList();
   }
 
-<<<<<<< HEAD
   openPage(seller) {
     this.listService.purchase(seller.id);
     this.navCtrl.push(BuyerConfirmation, {
@@ -42,7 +43,7 @@ export class BuyerBookList {
   onSubmit() {
     this.listService.request(this.form.price, this.book.isbn);
     this.navCtrl.push(BuyerRequestConfirmation, {});
-=======
+  }
   request(seller) {
     if (seller.btnText !== 'Requested') {
       seller.btnText = 'Requested'
@@ -51,10 +52,11 @@ export class BuyerBookList {
         buttons: ['OK']
       })
       alert.present();
+      this.listService.purchase(seller.listing_id);
+      this.popRoot();
     }
     // Send email to seller
     // Update database
->>>>>>> refs/remotes/origin/master
   }
 
   loadList(){
@@ -63,13 +65,15 @@ export class BuyerBookList {
       this.list = data;
       console.log(this.list);
       for(let l of this.list) {
-<<<<<<< HEAD
-        this.sellers.push({name: l.seller, price: l.cost, id: l.listing_id});
-=======
-        this.sellers.push({name: l.seller, price: l.cost, btnText: 'Request'});
->>>>>>> refs/remotes/origin/master
+        this.sellers.push({name: l.seller, price: l.cost, btnText: 'Request', listing_id: l.listing_id});
       }
     });
   }
+
+  popRoot() {
+    this.navCtrl.popToRoot();
+  }
+
+  
 
 }

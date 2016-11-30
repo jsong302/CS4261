@@ -36,14 +36,8 @@ export class BuyerSuggestedBooks {
   }
 
   onSubmit() {
-<<<<<<< HEAD
     this.bookService.add(this.course, this.professor, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
     this.openPage({title: this.form.title, author: this.form.author, isbn: this.form.isbn});
-=======
-    console.log(this.form);
-    this.bookService.add(this.course, this.form.isbn, this.form.title, this.form.author, this.form.publisher, this.form.edition);
-    this.openPage(this.form);
->>>>>>> refs/remotes/origin/master
   }
 
   loadList(){
@@ -52,7 +46,7 @@ export class BuyerSuggestedBooks {
     .then(data => {
       this.list = data;
       for(let l of this.list) {
-        this.suggestedBooks.push({title: l.title, author: l.author, publisher: l.publisher, isbn: l.isbn});
+        this.suggestedBooks.push({title: l.title, edition: l.edition, author: l.author, publisher: l.publisher, isbn: l.isbn});
       }
     });
     

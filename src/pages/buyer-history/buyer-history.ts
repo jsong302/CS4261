@@ -1,45 +1,39 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {ListService} from '../../providers/list-service';
 
 
 @Component({
-  templateUrl: 'buyer-history.html'
+  templateUrl: 'buyer-history.html',
+  providers: [ListService]
 })
 export class BuyerHistory {
-  requestedBooks: Array<{title: string, author: string, price: number}>;
-  boughtBooks: Array<{title: string, author: string, price: number}>;
+  requestedBooks: Array<{title: string, author: string, seller: string, price: string, id: number}>;
+  boughtBooks: Array<{title: string, author: string, seller: string, price: string, id: number}>;
+  public list: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listService: ListService) {
     // Pull info from database
-    this.requestedBooks = [
-      {title: 'Mobile Services Textbook',
-      author: 'John Smith, Steve Jones',
-      seller: 'Josh Song',
-      contact: 'jsong302@gatech.edu',
-      price: 100.50},
-      {title: 'Guide to the BMC',
-      author: 'John Jacboson',
-      seller: 'Yvonne Shi',
-      contact: 'jshi74@gatech.edu',
-      price: 200.75}
-    ];
-
-    this.boughtBooks = [
-      {title: 'Information in the New Age',
-      author: 'John Jones, Joseph Park',
-      seller: 'Kelly in',
-      contact: 'kin3@gatech.edu',
-      price: 55.25},
-      {title: 'The Study of Mobile Apps',
-      author: 'John Jones, Robert Paulson',
-      seller: 'Alex Kim'
-      contact: 'akim316@gatech.edu'
-      price: 98.75}
-    ];
+    this.requestedBooks = [];
+    this.boughtBooks = [];
+    this.loadBuyerHistory();
   }
 
   cancel(book) {
     this.requestedBooks.splice(this.requestedBooks.indexOf(book), 1);
-    // Update database
+    this.listService.cancelBuyer(book.id);
+  }
+
+  loadBuyerHistory() {
+    this.listService.buyerHistory()
+    .then(data => {
+      this.list = data;
+      for(let l of this.list['pending']) {
+        this.requestedBooks.push({title: l.title, author: l.author, seller: l.seller, price: l.cost, id: l.listing_id});
+      }
+      for(let m of this.list['bought']) {
+        this.requestedBooks.push({title: m.title, author: m.author, seller: m.seller, price: m.cost, id: m.listing_id});
+      }
+    });
   }
 }

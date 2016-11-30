@@ -21106,6 +21106,16 @@ sub {
   }
 }
 
+.hello-ionic-page p {
+  margin: 20px 0;
+  line-height: 22px;
+  font-size: 16px;
+}
+
+#history_button {
+  float: right;
+}
+
 .select-role-page p {
   margin: 20px 0;
   line-height: 22px;

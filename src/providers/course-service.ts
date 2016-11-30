@@ -14,7 +14,6 @@ export class CourseService {
 
   constructor(public http: Http) {
     this.data = null;
-    console.log('Hello CourseService Provider');
   }
 
   load() {
@@ -38,5 +37,4 @@ export class CourseService {
 	      });
 	  });
 	}
-
 }
